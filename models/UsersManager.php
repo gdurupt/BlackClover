@@ -37,4 +37,7 @@ class UsersManager extends Model{
         $execute = NULL;
         return $this->selectTable('Users',$update, $execute);   
     }
+    
+    
+             
 }
