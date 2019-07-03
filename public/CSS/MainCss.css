@@ -1,0 +1,216 @@
+body {
+    background-color: #8c8d8f;
+    font-family: "OldStandardTT";
+}
+
+
+header,
+footer {
+    background-image: url("../images/divers/bleu.jpg");
+    border-bottom: 0.5px solid #dcdcdd;
+    box-shadow: 0px 2px 10px #dcdcdd;
+    font-size: 1.2rem;
+    color: white;
+    padding-bottom: 5px;
+}
+
+header a,
+footer a,
+footer h1 {
+    color: white;
+}
+
+section img {
+    max-width: 100%;
+    height: auto;
+}
+
+#logo {
+    height: 90px;
+}
+
+nav a:hover {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: ghostwhite;
+}
+
+
+#menuNav,
+.fa-times {
+    display: none;
+}
+
+.fa-bars,
+.fa-times {
+    color: white;
+    font-size: 1.7rem;
+}
+
+header button {
+    background-color: #001937;
+    border-color: #001937;
+    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .main-navbar {
+        width: 100%;
+        background-color: #001937;
+    }
+
+    header a img {
+        position: relative;
+        left: 30px;
+    }
+}
+
+
+@media (max-width: 572px) {
+
+    header a img {
+        position: relative;
+        left: 18px;
+    }
+
+}
+
+
+.texte {
+    height: 1000px;
+    width: 100%;
+    background-color: midnightblue;
+}
+
+.episode {
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px black;
+    background-color: #f7f7f7;
+}
+
+.lienEpisode{
+        border-radius: 5px;
+    box-shadow: 1px 1px 5px black;
+    background-color: #f7f7f7;
+}
+
+.episode h5 {
+    cursor: pointer;
+}
+
+.fa-hand-point-right,
+.fa-hand-point-left {
+    font-size: 1.3rem;
+}
+
+.selectEpisode:hover .synopsisEpisode {
+    display: flex;
+}
+
+.synopsisEpisode {
+    display: none;
+}
+
+.divEpisode {
+    display: none;
+}
+
+.divManga img {
+    box-shadow: 1px 1px 5px black;
+}
+
+figcaption {
+    height: 50px;
+}
+
+.btn {
+    border-radius: 20px;
+    font-size: 1.2rem;
+    color: mediumseagreen;
+}
+
+.btn-sm {
+    border-radius: 20px;
+    font-size: 0.8rem;
+    background-color: white;
+    color: gray;
+}
+
+
+footer hr {
+    color: white;
+    size: 0;
+    width: 100%;
+}
+
+footer {
+    color: #007bff;
+}
+
+footer h1,
+p {
+    font-size: 1rem;
+}
+
+section {
+    background-color: white;
+    box-shadow: 0px 0px 10px black;
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+}
+
+
+.banniereConnection {
+    box-shadow: 1px 1px 5px black;
+}
+
+
+table{
+    font-size:1.2rem;
+}
+
+
+.fa-users-cog{
+    font-size: 2rem;
+}
+
+
+.gestionManga .btn{
+    color:black;
+    box-shadow: 1px 5px 10px gray;
+    border: 0.2px solid cornsilk;
+}
+
+.gestionManga .btn:focus, .btn:hover{
+    color:black;
+    box-shadow: 2px 5px 5px black;
+    border: 0.1px solid black;
+}
+
+.delete:focus, .delete:hover{
+    color:black;
+    box-shadow: 1px 5px 10px black;
+    border: 0.2px solid #d6061b;
+    background-color: #d6061b;
+}
+
+.validation:focus, .validation:hover{
+    color:black;
+    box-shadow: 1px 5px 10px black;
+    border: 0.2px solid green;
+    background-color: green;
+}
+
+.browe:focus, .browe:hover{
+    color:black;
+    box-shadow: 1px 5px 10px black;
+    border: 0.2px solid cornsilk;
+    background-color: cornsilk;
+}
+
+#tomeNew{
+    display:flex;
+}
