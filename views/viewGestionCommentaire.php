@@ -10,6 +10,16 @@
                 <button type="button" class="btn w-75" onclick="">Anime</button>
             </div>
     </div>
+    <hr>
+    <div class="row my-5 d-flex flex-column justify-content-center align-items-center">
+    <?php foreach ($arcs as $arc):?>
+        <h5><?= $arc->title() ?></h5>
+    <div class="my-5 d-flex justify-content-center align-items-center">
+        
+    </div>
+    <hr>
+    <?php endforeach?> 
+    </div>
     <!--===============================================================================================-->
 </section>
 <!--<script src="public/Javascript/EventGestionManga.js"></script>-->
