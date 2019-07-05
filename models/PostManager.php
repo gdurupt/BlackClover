@@ -80,7 +80,7 @@ if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
     } 
 //--------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------//
-        public function NewManga(){
+     public function NewManga(){
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
         // Testons si le fichier n'est pas trop gros
@@ -142,18 +142,18 @@ if ($_POST['content']){
          header('location: GestionManga');  
     }   
 //--------------------------------------------------------------------------------------------//     
-//--------------------------------POST PAGE ADMIN Comment-------------------------------------//    
+//--------------------------------POST PAGE ADMIN Gestion Commentaire-------------------------------------//    
 //--------------------------------------------------------------------------------------------//   
         public function DeleteComment(){
          $this->comment();  
-         $this->_commentManager->getDeleteComment($_POST['']);
-         header('location: '); 
+         $this->_commentManager->DeleteComment($_POST['id']);
+         header('location: Gestioncommentaire'); 
     }     
 //--------------------------------------------------------------------------------------------//       
         public function ManageComment(){
          $this->comment();  
-         $this->_commentManager->getReportComment($_POST[''],"0");
-         header('location: ');
+         $this->_commentManager->getReportComment($_POST['id'],"0");
+         header('location: Gestioncommentaire');
     }   
 //--------------------------------------------------------------------------------------------//
 //-----------------------------------POST PAGE Episode---------------------------------------//    
