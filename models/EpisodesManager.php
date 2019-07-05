@@ -27,4 +27,9 @@ class EpisodesManager extends Model{
         return $this->selectTable('Episodes', $update, $execute);     
     }
 //--------------------------------------------------------------------------------------------//
+    public function getEpisodesSUBSTRING(){       
+        $update = 'SELECT id, SUBSTRING(title FROM 1 FOR 9) as title, arc_id FROM episodes';
+        $execute = NULL;
+        return $this->selectTable('Episodes', $update, $execute);      
+    }
 }

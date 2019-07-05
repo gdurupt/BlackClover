@@ -214,3 +214,18 @@ table{
 #tomeNew{
     display:flex;
 }
+
+
+
+.DivGestionComs,.CommentaireBloc,.anime,.manga{
+    display:none;
+}
+
+.gestionManga h5{
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.gestionManga p{
+    font-size:1.3rem;
+}
