@@ -14,7 +14,7 @@ class ArcsManager extends Model{
         return $this->selectTable('Arcs', $update, $execute);     
     }
 //--------------------------------------------------------------------------------------------//
-        public function getCountArc(){   
+    public function getCountArc(){   
         
         $update = 'SELECT COUNT(*) AS nbArcs FROM arcs';
         $execute = NULL;
@@ -27,4 +27,21 @@ class ArcsManager extends Model{
         return $this->selectTable('Arcs', $update, $execute);     
     }
 //--------------------------------------------------------------------------------------------//
+    public function addArc($title, $content){ 
+             
+        $update = '(title, content) VALUES(:title, :content)';
+        $execute =array(
+	       'title' => $title,
+	       'content' => $content
+        );
+        return $this->addTable('arcs', $update, $execute);
+    }
+ //--------------------------------------------------------------------------------------------// 
+        public function DeleteArc($id){ 
+             
+        $where = " WHERE id = ";
+        
+        return $this->deleteTable('arcs',$where, $id);   
+    }
+ //--------------------------------------------------------------------------------------------//
 }

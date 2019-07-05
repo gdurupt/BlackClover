@@ -34,13 +34,13 @@ class CommentsManager extends Model{
         return $this->addTable('comments', $update, $execute);
     }
  //--------------------------------------------------------------------------------------------//   
-    public function getAllComment(){       
+    public function getAll(){       
         $update = 'SELECT * FROM comments';
         $execute = NULL;
         return $this->selectTable('Comments',$update, $execute);     
     }
  //--------------------------------------------------------------------------------------------//   
-    public function getDeleteComment($id){       
+    public function DeleteComment($id){       
         $where = " WHERE id = ";
         
         return $this->deleteTable('Comments',$where, $id);     

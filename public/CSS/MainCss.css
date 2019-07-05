@@ -82,7 +82,7 @@ header button {
     background-color: midnightblue;
 }
 
-.episode {
+.episode,.episodeliste {
     border-radius: 5px;
     box-shadow: 1px 1px 5px black;
     background-color: #f7f7f7;
@@ -214,3 +214,37 @@ table{
 #tomeNew{
     display:flex;
 }
+
+.DivGestionComs,.CommentaireBloc,.anime,.manga,.episodeliste,.ajoutepisode,.gestionAll{
+    display:none;
+}
+
+.gestionManga h5{
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.gestionManga p{
+    font-size:1.3rem;
+}
+
+.gestionArcEpisode p{
+    font-size:1.3rem;
+}
+
+.gestionArcEpisode input,.gestionArcEpisode button{
+    color:black;
+    font-size:1.2rem;
+}
+
+.gestionArcEpisode button{
+    border:0.5px solid black;
+}
+
+.ajoutepisode,#addEpisode,#gestionArc{
+border-radius: 5px;
+box-shadow: 1px 1px 5px black;
+background-color: #f7f7f7;
+}
+
+

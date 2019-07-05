@@ -2,10 +2,11 @@
 
 class PostManager{
 //--------------------------------------------------------------------------------------------//      
-    private $_episodeManager;
+    private $_episodesManager;
     private $_commentManager;
     private $_mangaManager;
     private $_usersManager;
+    private $_arcsManager;
 //--------------------------------------------------------------------------------------------//         
        public function __construct($data)
   {
@@ -22,8 +23,8 @@ class PostManager{
       }
   }
 //--------------------------------------------------------------------------------------------//   
-        public function article(){
-        $this->_episodeManager = new EpisodesManager;
+        public function episode(){
+        $this->_episodesManager = new EpisodesManager;
     }    
         public function comment(){
         $this->_commentManager = new CommentsManager;
@@ -34,9 +35,49 @@ class PostManager{
         public function user(){
         $this->_usersManager = new UsersManager;
     }
- 
+        public function arc(){
+        $this->_arcsManager = new ArcsManager;
+    }   
 //--------------------------------------------------------------------------------------------//     
-//--------------------------------POST PAGE ADMIN GestionManga-------------------------------------//    
+//----------------------POST PAGE ADMIN GestionArcEpisode-------------------------------------//    
+//--------------------------------------------------------------------------------------------//
+    public function AddArc(){
+         $this->arc();  
+         $this->_arcsManager->addArc($_POST['arc'],$_POST['content']);
+            
+         header('location: GestionArcEpisode');  
+    } 
+//--------------------------------------------------------------------------------------------// 
+        public function DeleteArc(){
+         $this->arc();  
+         $this->_arcsManager->DeleteArc($_POST['id']);
+            
+         $this->episode();  
+         $this->_episodesManager->DeleteEpisodesAll($_POST['id']);
+            
+         header('location: GestionArcEpisode');  
+    }
+//--------------------------------------------------------------------------------------------// 
+        public function DeleteEpisode(){
+            $this->episode();  
+            $this->_episodesManager->DeleteEpisode($_POST['id']);         
+            header('location: GestionArcEpisode');  
+    }
+//--------------------------------------------------------------------------------------------// 
+        public function AddEpisode(){
+            $this->episode();  
+            $this->_episodesManager->AddEpisode($_POST['title'],$_POST['content'],$_POST['arc_id'],$_POST['manga_id']);         
+            header('location: GestionArcEpisode');  
+    }
+//--------------------------------------------------------------------------------------------// 
+        public function UpdateEpisode(){
+            $this->episode();  
+            $this->_episodesManager->UpdateEpisode($_POST['id'],$_POST['title'],$_POST['content'],$_POST['manga_id']);         
+            header('location: GestionArcEpisode');  
+    }
+
+//--------------------------------------------------------------------------------------------//     
+//---------------------------POST PAGE ADMIN GestionManga-------------------------------------//    
 //--------------------------------------------------------------------------------------------//
      public function UpdateManga(){
  // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
@@ -80,7 +121,7 @@ if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
     } 
 //--------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------//
-        public function NewManga(){
+     public function NewManga(){
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
         // Testons si le fichier n'est pas trop gros
@@ -142,18 +183,18 @@ if ($_POST['content']){
          header('location: GestionManga');  
     }   
 //--------------------------------------------------------------------------------------------//     
-//--------------------------------POST PAGE ADMIN Comment-------------------------------------//    
+//---------------------------POST PAGE ADMIN Gestion Commentaire------------------------------//    
 //--------------------------------------------------------------------------------------------//   
         public function DeleteComment(){
          $this->comment();  
-         $this->_commentManager->getDeleteComment($_POST['']);
-         header('location: '); 
+         $this->_commentManager->DeleteComment($_POST['id']);
+         header('location: Gestioncommentaire'); 
     }     
 //--------------------------------------------------------------------------------------------//       
         public function ManageComment(){
          $this->comment();  
-         $this->_commentManager->getReportComment($_POST[''],"0");
-         header('location: ');
+         $this->_commentManager->getReportComment($_POST['id'],"0");
+         header('location: Gestioncommentaire');
     }   
 //--------------------------------------------------------------------------------------------//
 //-----------------------------------POST PAGE Episode---------------------------------------//    
@@ -162,7 +203,7 @@ if ($_POST['content']){
             $this->comment();  
             $this->_commentManager->AddComment($_POST['pseudo'], $_POST['content'], $_GET['id'],false,true);         
             header('location: Episode&id='.$_GET["id"]);  
-    }           
+    }    
 //--------------------------------------------------------------------------------------------//
 //-----------------------------------POST PAGE Manga---------------------------------------//    
 //--------------------------------------------------------------------------------------------// 
@@ -174,8 +215,7 @@ if ($_POST['content']){
 //--------------------------------------------------------------------------------------------//
 //----------------------------REPORT PAGE Manga and Episode-----------------------------------//    
 //--------------------------------------------------------------------------------------------//    
-        public function ReportComment(){
-            
+        public function ReportComment(){    
             $this->comment();  
             $this->_commentManager->getReportComment($_POST['report'],"1");
             header('location: '.$_GET["url"].'&id='.$_GET["id"]);
