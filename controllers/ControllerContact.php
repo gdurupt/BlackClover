@@ -12,11 +12,16 @@ class ControllerContact{
             throw new \Exception("Page Introuvable"); 
             
         }else {       
-            $this->PageAccueil();    
+            $this->PageContact();    
         }   
     }
     
-    private function PageAccueil(){     
+    private function PageContact(){     
+        
+        
+        if(isset($_POST["Post"])){
+            $this->_postManager = new PostManager($_POST["Post"]);
+        } 
         
         $this->_view = new View('Contact');     
         $this->_view->generate(array());

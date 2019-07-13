@@ -37,6 +37,24 @@ abstract class Model
     return $var;
     $req->closeCursor();
   }
+
+//--------------------------------------------------------------------------------------------//     
+//--------------------------------    MODEL   SELECT Rating    -------------------------------------//    
+//--------------------------------------------------------------------------------------------//
+  protected function selectRatings($select, $execute){
+    $this->getBdd();
+    $var = [];
+    $req = self::$_bdd->prepare($select);
+    $req->execute($execute);
+
+        $resultat = $req->fetch();
+        
+        if (!$resultat){     
+            $_SESSION['rating'] = 0;
+        }else{
+            $_SESSION['rating'] = 1;
+        }
+  }
 //--------------------------------------------------------------------------------------------//     
 //--------------------------------    MODEL   INSERT     -------------------------------------//    
 //--------------------------------------------------------------------------------------------//   
@@ -81,6 +99,7 @@ abstract class Model
          if ($isPasswordCorrect){
              $_SESSION['admin'] = $resultat['admin'];
              $_SESSION['pseudo'] = $resultat['pseudo'];
+             $_SESSION['id'] = $resultat['id'];
             }else{
              header('location: Connection');
     }

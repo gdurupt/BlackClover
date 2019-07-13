@@ -1,20 +1,74 @@
+<?php foreach ($notations as $notation):?>
+<?php $note = $notation->notation();?>
+<?php endforeach?>
+
+<?php foreach ($nbratings as $nbrating):?>
+<?php $nbVote = $nbrating->nbRatings();?>
+<?php endforeach?>
+
 <section class="container mt-5 mb-5 p-5">
     <?php foreach ($episodes as $episode):?>
     <!--===============================================================================================-->
     <h2 class="d-flex justify-content-center display-4"><?= $episode->title() ?></h2>
     <hr>
     <div class="row d-flex justify-content-around align-item-center">
-        <p>Date</p>
-        <p>Notation</p>
+        <p><?= $episode->date_episode() ?></p>
+        <p><?php if($nbVote > 0){
+    echo $note."/10 De ".$nbVote." membres";
+}else{
+    echo "Aucune note pour le moment";
+} ?></p>
     </div>
     <hr>
 
     <div class="row d-flex">
-        <img class="col-lg-5 col-md-6 col-sm-12 divManga img-fluid" src="public/images/manga/black%20clover%20tome%20<?= $episode->arc_id() ?>.jpg">
-
-        <div class="col-lg-7 col-md-6 col-sm-12 d-flex flex-column justify-content-center align-item-center">
+        <?php foreach ($mangas as $manga):?>
+            <?php if($episode->manga_id() == $manga->id()){ ?>
+                <img class="col-lg-5 col-md-6 col-sm-12 divManga img-fluid" src="public/images/manga/<?= $manga->image() ?>">
+            <?php } ?>
+        <?php endforeach?>
+        <div class="col-lg-7 col-md-6 col-sm-12 d-flex flex-column justify-content-around">
             <h2 class="text-center">Synopsis</h2>
             <p class="text-center"><?= $episode->content() ?></p>
+            <hr>
+            <div class="d-flex justify-content-around align-items-center">
+                <h5>Noter :</h5>
+
+                <div><?php if(isset($_SESSION['id'])){ ?>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=1&update=<?= $_SESSION['rating'] ?>" id="star_1" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=2&update=<?= $_SESSION['rating'] ?>" id="star_2" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=3&update=<?= $_SESSION['rating'] ?>" id="star_3" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=4&update=<?= $_SESSION['rating'] ?>" id="star_4" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=5&update=<?= $_SESSION['rating'] ?>" id="star_5" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=6&update=<?= $_SESSION['rating'] ?>" id="star_6" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=7&update=<?= $_SESSION['rating'] ?>" id="star_7" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=8&update=<?= $_SESSION['rating'] ?>" id="star_8" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=9&update=<?= $_SESSION['rating'] ?>" id="star_9" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <a href="Episode&id=<?= $_GET["id"] ?>&note=10&update=<?= $_SESSION['rating'] ?>" id="star_10" class="text-decoration-none">
+                        <span><i class="far fa-star"></i></span>
+                    </a>
+                    <?php }else{ echo "Veuillez vous connecter pour noter ce tome"; }?>
+                </div>
+
+            </div>
         </div>
 
     </div>

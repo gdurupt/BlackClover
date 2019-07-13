@@ -35,7 +35,7 @@
             <?php foreach ($episodes as $episode):?>
             <?php if($episode->arc_id() == $numberArc){ ?>
             
-            <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="col-2 d-flex justify-content-center align-items-center my-2">
                 <button class="btn" onclick="EventGestionCommentaire.EventFirstClickEpisode(<?= $episode->id() ?>)"><?= $episode->title() ?></button>
             </div>
             <?php }?>

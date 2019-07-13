@@ -37,7 +37,14 @@ class UsersManager extends Model{
         $execute = NULL;
         return $this->selectTable('Users',$update, $execute);   
     }
-    
-    
-             
+//--------------------------------------------------------------------------------------------// 
+    public function UpdatePseudo($change, $email,$col){             
+        $update = ' SET '.$col.' = :change WHERE email = :email';
+        $execute = array(
+	       'change' => $change,
+            'email' => $email
+	);      
+        return $this->updateTable('users', $update, $execute);      
+    }
+//--------------------------------------------------------------------------------------------// 
 }

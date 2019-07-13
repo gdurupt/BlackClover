@@ -32,4 +32,42 @@ class EpisodesManager extends Model{
         $execute = NULL;
         return $this->selectTable('Episodes', $update, $execute);      
     }
+//--------------------------------------------------------------------------------------------//    
+    public function DeleteEpisodesAll($id){ 
+             
+        $where = " WHERE arc_id = ";
+        
+        return $this->deleteTable('episodes',$where, $id);   
+    }
+//--------------------------------------------------------------------------------------------//
+        public function DeleteEpisode($id){ 
+             
+        $where = " WHERE id = ";
+        
+        return $this->deleteTable('episodes',$where, $id);   
+    }
+//--------------------------------------------------------------------------------------------//    
+    public function AddEpisode($title, $content, $arc_id, $manga_id){ 
+             
+        $update = '(title, content, arc_id, manga_id,url_video, date_episode) VALUES(:title, :content, :arc_id, :manga_id,"null",NOW())';
+        $execute =array(
+	       'title' => $title,
+	       'content' => $content,
+           'arc_id' => $arc_id,
+           'manga_id' => $manga_id
+        );
+        return $this->addTable('episodes', $update, $execute);
+    }
+//--------------------------------------------------------------------------------------------//  
+    public function UpdateEpisode($id,$title,$content,$manga_id){             
+        $update = ' SET title = :title, content = :content, manga_id = :manga_id WHERE id = :id';
+        $execute = array(
+	       'title' => $title,
+	       'content' => $content,
+           'manga_id' => $manga_id,
+           'id' => $id
+	);      
+        return $this->updateTable('episodes', $update, $execute);      
+    }
+//--------------------------------------------------------------------------------------------//  
 }

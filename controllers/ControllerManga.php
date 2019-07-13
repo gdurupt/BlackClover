@@ -13,11 +13,11 @@ class ControllerManga{
             throw new \Exception("Page Introuvable"); 
             
         }else {       
-            $this->PageAccueil();    
+            $this->PageManga();    
         }   
     }
     
-    private function PageAccueil(){     
+    private function PageManga(){     
         
         $this->_mangasManager = new MangasManager;
         

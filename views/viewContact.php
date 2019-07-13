@@ -7,7 +7,7 @@
 <!-- ---------------------------------------------------------------------------------------- -->
         <hr>
 <!-- ---------------------------------------------------------------------------------------- -->
-        <form action="contact" method="post" class="d-flex">
+        <form action="Contact" method="post" class="d-flex">
 <!-- -------------------------------------  Input Hidden  ------------------------------------ -->
             <input type="hidden" name="Post" value="Contact" />
 <!-- --------------------------------------- Formulaire ------------------------------------------ -->
@@ -56,7 +56,7 @@
                 <!-- ---------------------------------------------------------------------------------------- -->
                 <div class="col-md-12 mt-3 mb-3">
                     <input type="checkbox" required id="cgu">
-                    <label class="" for="cgu">J’accepte la politique de confidentialité de BlackCloverWiki.</label>
+                    <label for="cgu">J’accepte la politique de confidentialité de BlackCloverWiki.</label>
                 </div>
                 <!-- ---------------------------------------------------------------------------------------- -->
                 <div class="col-md-12 mt-3 mb-3 d-flex justify-content-center">

@@ -45,8 +45,8 @@
                             </li>
                             <!-- ---------------------------------------------------------------------------------------- -->
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Personnages
+                                <a class="nav-link" href="Personnage">
+                                    Personnage
                                 </a>
                             </li>
                             <!-- ---------------------------------------------------------------------------------------- -->
@@ -75,6 +75,7 @@
                                     <a class="dropdown-item" href="Admin">Accueil Admin</a>
                                     <a class="dropdown-item" href="GestionManga">Gestion Mangas</a>
                                     <a class="dropdown-item" href="GestionArcEpisode">Gestion Arcs/Episodes</a>
+                                    <a class="dropdown-item" href="GestionPersonnage">Gestion Personnages</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="GestionCommentaire">Moderation Commentaires</a>
                                 </div>
@@ -87,7 +88,7 @@
                             <!-- ---------------------------------------------------------------------------------------- -->
                             <li class="nav-item active">
                                 <?php   
-                            if(isset($_SESSION['admin']) AND $_SESSION['admin'] == 'true'){
+                            if(isset($_SESSION['pseudo'])){
 ?> <a class="nav-link" href="deconnection">Deconnexion</a><?php       
                             }else{
                             }

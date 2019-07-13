@@ -29,7 +29,7 @@ class MangasManager extends Model{
 //--------------------------------------------------------------------------------------------//
     public function addManga($title,$content,$file){ 
   
-        $update = '(title, text, image) VALUES(:title, :content, :file)';
+        $update = '(title, text, image, date_manga) VALUES(:title, :content, :file, NOW())';
         $execute =array(
 	       'title' => $title,
 	       'content' => $content,

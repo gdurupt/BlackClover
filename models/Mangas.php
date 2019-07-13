@@ -6,6 +6,7 @@ class Mangas{
   private $_text;
   private $_image;
   private $_nbmangas;
+  private $_date_manga;
 //--------------------------------------------------------------------------------------------//          
    public function __construct(array $data)
   {
@@ -55,7 +56,12 @@ class Mangas{
     if ($nbmangas > 0) {
       $this->_nbmangas = $nbmangas;
     }
-  }  
+  }
+    public function setDate_manga($date)
+  {
+      $this->_date_manga = $date;
+  }
+    
 //--------------------------------------------------------------------------------------------//   
     public function id()
   {
@@ -79,6 +85,10 @@ class Mangas{
     public function nbmangas()
   {
     return $this->_nbmangas;
+  }
+    public function date_manga()
+  {
+    return $this->_date_manga;
   }
 
 }

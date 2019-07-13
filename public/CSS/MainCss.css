@@ -82,7 +82,7 @@ header button {
     background-color: midnightblue;
 }
 
-.episode {
+.episode,.episodeliste {
     border-radius: 5px;
     box-shadow: 1px 1px 5px black;
     background-color: #f7f7f7;
@@ -184,7 +184,7 @@ table{
     border: 0.2px solid cornsilk;
 }
 
-.gestionManga .btn:focus, .btn:hover{
+.gestionManga .btn:focus, .btn:hover,.formCompte{
     color:black;
     box-shadow: 2px 5px 5px black;
     border: 0.1px solid black;
@@ -215,9 +215,7 @@ table{
     display:flex;
 }
 
-
-
-.DivGestionComs,.CommentaireBloc,.anime,.manga{
+.DivGestionComs,.CommentaireBloc,.anime,.manga,.episodeliste,.ajoutepisode,.gestionAll{
     display:none;
 }
 
@@ -229,3 +227,46 @@ table{
 .gestionManga p{
     font-size:1.3rem;
 }
+
+.gestionArcEpisode p{
+    font-size:1.3rem;
+}
+
+.gestionArcEpisode input,.gestionArcEpisode button{
+    color:black;
+    font-size:1.2rem;
+}
+
+.gestionArcEpisode button{
+    border:0.5px solid black;
+}
+
+.ajoutepisode,#addEpisode,.gestionArc{
+border-radius: 5px;
+box-shadow: 1px 1px 5px black;
+background-color: #f7f7f7;
+}
+
+.btn{
+    color:black;
+}
+
+
+.blockArrow{
+    position: relative;
+    top:200px;
+}
+
+.left,.right{
+cursor:pointer;
+}
+
+.divSlide{
+    display:none;
+}
+
+.ActiveSlide{
+    display:flex;
+}
+
+

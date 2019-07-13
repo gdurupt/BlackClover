@@ -45,10 +45,14 @@ class ControllerGestionArcEpisode{
             
             $episodes = $this->_episodesManager->getAll();  
             
-            $arcs = $this->_arcsManager->getAll();  
+            $arcs = $this->_arcsManager->getAll();
+ //--------------------------------------------------------------------------------------------//            
+            $this->_episodesManager = new EpisodesManager;
+        
+            $episodesStrings = $this->_episodesManager->getEpisodesSUBSTRING();
                 
             $this->_view = new View('GestionArcEpisode');     
-            $this->_view->generate(array('mangas' => $mangas,'arcs' => $arcs,'episodes' => $episodes));
+            $this->_view->generate(array('mangas' => $mangas,'arcs' => $arcs,'episodes' => $episodes,'episodesStrings' => $episodesStrings));
             
         }else{
             header('location: Accueil');
