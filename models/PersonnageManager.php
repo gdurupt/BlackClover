@@ -35,4 +35,10 @@ class PersonnageManager extends Model{
         
         return $this->deleteTable('personnage',$where, $id);     
     }
+//--------------------------------------------------------------------------------------------//
+    public function getLast(){
+        $update = 'SELECT * FROM personnage ORDER by id DESC limit 1';
+        $execute = NULL;
+        return $this->selectTable('personnage', $update, $execute);     
+    }
 }

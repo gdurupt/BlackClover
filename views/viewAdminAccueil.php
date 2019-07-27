@@ -34,6 +34,9 @@
     <?php $UsersCount = $UsersCount->nbUsers();?>
 <?php endforeach?>
 
+<?php foreach ($visiteds as $visited):?>
+    <?php $Nbvisited = $visited->visited();?>
+<?php endforeach?>
 
 <section class="container adminAccueil">
     <div class="row d-flex flex-column justify-content-center align-items-center m-5 p-4 h-100">
@@ -57,7 +60,7 @@
                 </tr>
                 <tr>
                     <th scope="row">Nombre de visite</th>
-                    <td>Depuis la creation de BlackClover Wiki il y a eu XXX visite sur votre site web</td>
+                    <td>Depuis la creation de BlackClover Wiki il y a eu <span class="font-weight-bold text-success"><?= $Nbvisited ?></span> visite sur votre site web (toutes pages)</td>
                 </tr>
                 <tr>
                     <th scope="row">Nombre de commentaire</th>

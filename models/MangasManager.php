@@ -16,7 +16,7 @@ class MangasManager extends Model{
 //--------------------------------------------------------------------------------------------//
     public function getCountManga(){   
         
-        $update = 'SELECT COUNT(*) AS nbMangas FROM Mangas';
+        $update = 'SELECT COUNT(*) AS nbMangas FROM mangas';
         $execute = NULL;
         return $this->selectTable('Mangas',$update, $execute);   
     }

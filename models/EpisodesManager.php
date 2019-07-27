@@ -46,26 +46,28 @@ class EpisodesManager extends Model{
         
         return $this->deleteTable('episodes',$where, $id);   
     }
-//--------------------------------------------------------------------------------------------//    
-    public function AddEpisode($title, $content, $arc_id, $manga_id){ 
+//--------------------------------------------------------------------------------------------//
+    public function AddEpisode($title, $content, $arc_id, $manga_id,$url){ 
              
-        $update = '(title, content, arc_id, manga_id,url_video, date_episode) VALUES(:title, :content, :arc_id, :manga_id,"null",NOW())';
+        $update = '(title, content, arc_id, manga_id,url_video, date_episode) VALUES(:title, :content, :arc_id, :manga_id,:url_video,NOW())';
         $execute =array(
 	       'title' => $title,
 	       'content' => $content,
            'arc_id' => $arc_id,
-           'manga_id' => $manga_id
+           'manga_id' => $manga_id,
+            'url_video' => $url
         );
         return $this->addTable('episodes', $update, $execute);
     }
 //--------------------------------------------------------------------------------------------//  
-    public function UpdateEpisode($id,$title,$content,$manga_id){             
-        $update = ' SET title = :title, content = :content, manga_id = :manga_id WHERE id = :id';
+    public function UpdateEpisode($id,$title,$content,$manga_id,$url){             
+        $update = ' SET title = :title, content = :content, manga_id = :manga_id, url_video = :url_video  WHERE id = :id';
         $execute = array(
 	       'title' => $title,
 	       'content' => $content,
            'manga_id' => $manga_id,
-           'id' => $id
+           'id' => $id,
+            'url_video' => $url
 	);      
         return $this->updateTable('episodes', $update, $execute);      
     }

@@ -31,7 +31,6 @@ class Mangas{
       $this->_id = $id;
     }
   }
- 
     public function setTitle($title)
   {
     if (is_string($title)) {

@@ -3,22 +3,20 @@
 require_once 'views/View.php';
 
 class ControllerGestionManga{
-    
+//--------------------------------------------------------------------------------------------//    
     private $_view;
     private $_mangasManager;
     private $_usersManager;
     private $_postManager;
-    
-    public function __construct($url){     
-        
+//--------------------------------------------------------------------------------------------//    
+    public function __construct($url){           
         if (isset($url) && count($url) > 1) {       
-            throw new \Exception("Page Introuvable"); 
-            
+            throw new \Exception("Page Introuvable");          
         }else {       
             $this->PageGestionManga();    
         }   
     }
-    
+//--------------------------------------------------------------------------------------------//    
     private function PageGestionManga(){  
     
     if(isset($_SESSION['email']) AND isset($_SESSION['password'])){

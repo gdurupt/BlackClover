@@ -1,7 +1,7 @@
 <section class="container mt-5">
             
     
-    <img class="mt-3 banniereConnection" src="public/images/divers/blackCloverBanniere.jpg">
+    <img class="mt-3 banniereConnection" src="public/images/divers/blackCloverBanniere.jpg" alt="Banniere">
  <!--===============================================================================================-->    
             <div class="row d-flex justify-content-center align-items-center m-5 p-4 h-100">
 <!--===============================================================================================-->  

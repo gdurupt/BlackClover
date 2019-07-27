@@ -28,7 +28,7 @@ class RatingsManager extends Model{
         return $this->selectTable('Ratings', $update, $execute);     
     }
 //--------------------------------------------------------------------------------------------//
-    public function getRatings($article, $id_article){
+    public function getRatingsForOne($article, $id_article){
         
         if($article == true){
             $where = "id_manga = ".$id_article;
@@ -37,6 +37,13 @@ class RatingsManager extends Model{
         }
         
         $update = 'SELECT AVG(ratings) AS notation FROM ratings WHERE '.$where;
+        $execute = NULL;
+        return $this->selectTable('Ratings', $update, $execute);     
+    }
+//--------------------------------------------------------------------------------------------//
+    public function getRatings(){
+        
+        $update = 'SELECT *, AVG(ratings) AS notation FROM ratings ';
         $execute = NULL;
         return $this->selectTable('Ratings', $update, $execute);     
     }

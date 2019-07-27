@@ -43,13 +43,13 @@ class CommentsManager extends Model{
     public function DeleteComment($id){       
         $where = " WHERE id = ";
         
-        return $this->deleteTable('Comments',$where, $id);     
+        return $this->deleteTable('comments',$where, $id);     
     }
  //--------------------------------------------------------------------------------------------//    
         public function getDeleteAllComment($id){ 
         $where = " WHERE page = ";   
             
-        return $this->deleteTable('Comments',$where, $id);     
+        return $this->deleteTable('comments',$where, $id);     
     }
  //--------------------------------------------------------------------------------------------// 
     public function getReportComment($id,$obj){       
@@ -57,7 +57,7 @@ class CommentsManager extends Model{
         $execute =array(
 	       'report' => $obj
         );
-        return $this->updateTable('Comments', $update, $execute);     
+        return $this->updateTable('comments', $update, $execute);     
     }
  //--------------------------------------------------------------------------------------------//   
     public function getCountComment($report){   

@@ -1,8 +1,10 @@
+/* Body & Font Family */
 body {
     background-color: #8c8d8f;
     font-family: "OldStandardTT";
 }
 
+/* Template */
 
 header,
 footer {
@@ -18,11 +20,6 @@ header a,
 footer a,
 footer h1 {
     color: white;
-}
-
-section img {
-    max-width: 100%;
-    height: auto;
 }
 
 #logo {
@@ -53,43 +50,61 @@ header button {
     cursor: pointer;
 }
 
-@media (max-width: 992px) {
-    .main-navbar {
-        width: 100%;
-        background-color: #001937;
-    }
-
-    header a img {
-        position: relative;
-        left: 30px;
-    }
-}
-
-
-@media (max-width: 572px) {
-
-    header a img {
-        position: relative;
-        left: 18px;
-    }
-
-}
-
-
-.texte {
-    height: 1000px;
+footer hr {
+    color: white;
+    size: 0;
     width: 100%;
-    background-color: midnightblue;
 }
 
-.episode,.episodeliste {
+footer {
+    color: #007bff;
+}
+
+footer h1,
+p {
+    font-size: 1rem;
+}
+
+/* Section Generale */
+section {
+    background-color: white;
+    box-shadow: 0px 0px 10px black;
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+}
+
+section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn {
+    border-radius: 20px;
+    font-size: 1.2rem;
+    color: black;
+}
+
+.btn-sm {
+    border-radius: 20px;
+    font-size: 0.8rem;
+    background-color: white;
+    color: gray;
+}
+
+/* Section Episode */
+
+.episode,
+.episodeliste {
     border-radius: 5px;
     box-shadow: 1px 1px 5px black;
     background-color: #f7f7f7;
 }
 
-.lienEpisode{
-        border-radius: 5px;
+.lienEpisode {
+    border-radius: 5px;
     box-shadow: 1px 1px 5px black;
     background-color: #f7f7f7;
 }
@@ -115,6 +130,8 @@ header button {
     display: none;
 }
 
+/* Section Manga */
+
 .divManga img {
     box-shadow: 1px 1px 5px black;
 }
@@ -123,150 +140,186 @@ figcaption {
     height: 50px;
 }
 
-.btn {
-    border-radius: 20px;
-    font-size: 1.2rem;
-    color: mediumseagreen;
-}
-
-.btn-sm {
-    border-radius: 20px;
-    font-size: 0.8rem;
-    background-color: white;
-    color: gray;
-}
-
-
-footer hr {
-    color: white;
-    size: 0;
-    width: 100%;
-}
-
-footer {
-    color: #007bff;
-}
-
-footer h1,
-p {
-    font-size: 1rem;
-}
-
-section {
-    background-color: white;
-    box-shadow: 0px 0px 10px black;
-}
-
-hr {
-    height: 1px;
-    width: 100%;
-}
-
 
 .banniereConnection {
     box-shadow: 1px 1px 5px black;
 }
 
 
-table{
-    font-size:1.2rem;
+table {
+    font-size: 1.2rem;
 }
 
 
-.fa-users-cog{
+.fa-users-cog {
     font-size: 2rem;
 }
 
 
-.gestionManga .btn{
-    color:black;
-    box-shadow: 1px 5px 10px gray;
-    border: 0.2px solid cornsilk;
+.gestionManga .btn {
+    color: black;
+    border: 0.2px solid black;
+    background-color: lightslategray;
 }
 
-.gestionManga .btn:focus, .btn:hover,.formCompte{
-    color:black;
+.gestionManga .btn:focus,
+.btn:hover,
+.formCompte {
+    color: black;
     box-shadow: 2px 5px 5px black;
     border: 0.1px solid black;
 }
 
-.delete:focus, .delete:hover{
-    color:black;
+.delete:focus,
+.delete:hover {
+    color: black;
     box-shadow: 1px 5px 10px black;
     border: 0.2px solid #d6061b;
     background-color: #d6061b;
 }
 
-.validation:focus, .validation:hover{
-    color:black;
+.validation:focus,
+.validation:hover {
+    color: black;
     box-shadow: 1px 5px 10px black;
     border: 0.2px solid green;
     background-color: green;
 }
 
-.browe:focus, .browe:hover{
-    color:black;
+.browe:focus,
+.browe:hover {
+    color: black;
     box-shadow: 1px 5px 10px black;
     border: 0.2px solid cornsilk;
     background-color: cornsilk;
 }
 
-#tomeNew{
-    display:flex;
+#tomeNew {
+    display: flex;
 }
 
-.DivGestionComs,.CommentaireBloc,.anime,.manga,.episodeliste,.ajoutepisode,.gestionAll{
-    display:none;
+.DivGestionComs,
+.CommentaireBloc,
+.anime,
+.manga,
+.episodeliste,
+.ajoutepisode,
+.gestionAll {
+    display: none;
 }
 
-.gestionManga h5{
-    cursor:pointer;
+.gestionManga h5 {
+    cursor: pointer;
     font-weight: bold;
 }
 
-.gestionManga p{
-    font-size:1.3rem;
+.gestionManga p {
+    font-size: 1.3rem;
 }
 
-.gestionArcEpisode p{
-    font-size:1.3rem;
+.gestionArcEpisode p {
+    font-size: 1.3rem;
 }
 
-.gestionArcEpisode input,.gestionArcEpisode button{
-    color:black;
-    font-size:1.2rem;
+.gestionArcEpisode input,
+.gestionArcEpisode button {
+    color: black;
+    font-size: 1.2rem;
 }
 
-.gestionArcEpisode button{
-    border:0.5px solid black;
+.gestionArcEpisode button {
+    border: 0.5px solid black;
 }
 
-.ajoutepisode,#addEpisode,.gestionArc{
-border-radius: 5px;
-box-shadow: 1px 1px 5px black;
-background-color: #f7f7f7;
+.ajoutepisode,
+#addEpisode,
+.gestionArc {
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px black;
+    background-color: #f7f7f7;
 }
 
-.btn{
-    color:black;
+.animationDiv {
+    height: 400px;
+    width: 100%;
+    background-image: url("../images/divers/bleu.jpg");
+    padding: 0px;
 }
 
-
-.blockArrow{
-    position: relative;
-    top:200px;
+.slide1Titre {
+    color: white;
 }
 
-.left,.right{
-cursor:pointer;
+.slidePara {
+    color: white;
 }
 
-.divSlide{
-    display:none;
+#api p {
+    font-size: 1.4rem;
 }
 
-.ActiveSlide{
-    display:flex;
+.trefle {
+    height: 40px;
 }
 
+/* Responsive */
 
+@media (max-width: 992px) {
+    .main-navbar {
+        width: 100%;
+        background-color: #001937;
+    }
+
+    header a img {
+        position: relative;
+        left: 30px;
+    }
+
+}
+
+@media (max-width: 572px) {
+    header a img {
+        position: relative;
+        left: 18px;
+    }
+
+}
+
+@media (min-width: 702px) {
+    .slidePara {
+        font-size: 3rem;
+    }
+}
+
+/* ANIMATION */
+
+.trefle {
+    -webkit-animation-name: rotating;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-timing-function: linear, linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: rotating;
+    animation-timing-function: linear, linear;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}

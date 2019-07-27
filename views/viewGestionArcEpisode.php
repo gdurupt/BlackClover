@@ -91,47 +91,51 @@
                 </div>
                 <div class="form-group">
                     <select name="manga_id" class="form-control">
+                        <option value="0">Image d'exemple</option>
                         <?php foreach ($mangas as $manga):?>
                         <option value="<?= $manga->id() ?>"><?= $manga->title() ?></option>
                         <?php endforeach?>
                     </select>
                 </div>
-                <div class="col-12 w-100 d-flex justify-content-center align-items-center my-5">
+                <div class="w-100 my-4">
+                    <input type="text" name="url" value="<?= $episode->url_video() ?>" required class="form-control text-center" />
+                </div>
+                <div class="col-12 w-100 d-flex justify-content-center align-items-center my-2">
                     <input type="submit" value="Modifier" class="btn btn-success btn px-3 ">
                 </div>
             </form>
             <form action="GestionArcEpisode" method="post" class="col-12 w-100">
                 <input type="hidden" name="Post" value="DeleteEpisode" />
                 <input type="hidden" name="id" value="<?= $episode->id() ?>" />
-                <div class="col-12 w-100 d-flex justify-content-center align-items-center my-5">
+                <div class="col-12 w-100 d-flex justify-content-center align-items-center mb-3">
                     <input type="submit" value="Supprimer" class="btn btn-danger btn px-3 ">
                 </div>
             </form>
-
         </div>
         <?php  } ?>
         <?php endforeach?>
-
-
-
         <div class="ajoutepisode col-9 justify-content-center align-items-center" id="addEpisode<?= $numberArc ?>">
             <form action="GestionArcEpisode" method="post" class="w-100">
                 <input type="hidden" name="Post" value="AddEpisode" />
                 <input type="hidden" name="arc_id" value="<?= $arc->id() ?>" />
                 <div class="w-100 my-4">
-                    <input type="text" name="title" value="" required class="form-control" />
+                    <input type="text" name="title" value="Titre" required class="form-control text-center" />
                 </div>
                 <div class=" w-100 my-4">
                     <textarea class="form-control" name="content" value="" required></textarea>
                 </div>
                 <div class="form-group">
                     <select name="manga_id" class="form-control">
+                        <option value="0">Image d'exemple</option>
                         <?php foreach ($mangas as $manga):?>
                         <option value="<?= $manga->id() ?>"><?= $manga->title() ?></option>
                         <?php endforeach?>
                     </select>
                 </div>
-                <div class="col-12 w-100 d-flex justify-content-center align-items-center my-5">
+                <div class="w-100 my-4">
+                    <input type="text" name="url" value="Url" required class="form-control text-center" />
+                </div>
+                <div class="col-12 w-100 d-flex justify-content-center align-items-center my-2">
                     <input type="submit" value="Ajouter" class="btn btn-success btn px-3 ">
                 </div>
             </form>

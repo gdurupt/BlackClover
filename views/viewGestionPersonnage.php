@@ -3,8 +3,8 @@
     <h2 class="d-flex justify-content-center">Gestion des Personnages</h2>
     <hr>
     <div class="row d-flex mb-5">
-        <div class="btn-toolbar col-3" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group-vertical mr-2" role="group" aria-label="First group" id="buttonDivManga">
+        <div class="btn-toolbar col-2" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group-vertical mr-2 w-100" role="group" aria-label="First group" id="buttonDivManga">
                 <button type="button" class="btn" onclick="EventGestionPersonnage.EventClick(0)">Ajouter</button>
                 <?php foreach ($personnages as $personnage):?>
                 <button type="button" class="btn" onclick="EventGestionPersonnage.EventClick(<?= $personnage->id() ?>)"><?= $personnage->title() ?></button>
@@ -17,7 +17,7 @@
                 <input class="my-4 text-center form-control" type="text" name="title" value="" require />
 
                 <figure class="img-fluid">
-                    <img src="public/images/personnage/imageexemple.jpg" alt="image">
+                    <img src="public/images/personnage/imageexemple.jpg" alt="exemple">
                     <figcaption>Image d'exemple oublier pas d'en ajouter une !</figcaption>
                 </figure>
 
@@ -47,7 +47,7 @@
                 <input class="my-4 text-center form-control" type="text" name="title" value="<?= $personnage->title() ?>" />
 
                 <figure class="img-fluid">
-                    <img src="public/images/personnage/<?= $personnage->image() ?>" alt="">
+                    <img class="w-50" src="public/images/personnage/<?= $personnage->image() ?>" alt="<?= $personnage->title() ?>">
                     <figcaption>Image du tome selectionné</figcaption>
                 </figure>
 

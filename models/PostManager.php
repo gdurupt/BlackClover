@@ -45,14 +45,14 @@ class PostManager{
 //--------------------------------------------------------------------------------------------//     
 //----------------------POST PAGE ADMIN GestionArcEpisode-------------------------------------//    
 //--------------------------------------------------------------------------------------------//
-    public function AddArc(){
+        public function AddArc(){
          $this->arc();  
          $this->_arcsManager->addArc($_POST['arc'],$_POST['content']);
             
          header('location: GestionArcEpisode');  
     } 
 //--------------------------------------------------------------------------------------------// 
-        public function DeleteArc(){
+    public function DeleteArc(){
          $this->arc();  
          $this->_arcsManager->DeleteArc($_POST['id']);
             
@@ -62,21 +62,21 @@ class PostManager{
          header('location: GestionArcEpisode');  
     }
 //--------------------------------------------------------------------------------------------// 
-        public function DeleteEpisode(){
+    public function DeleteEpisode(){
             $this->episode();  
             $this->_episodesManager->DeleteEpisode($_POST['id']);         
             header('location: GestionArcEpisode');  
     }
 //--------------------------------------------------------------------------------------------// 
-        public function AddEpisode(){
+    public function AddEpisode(){
             $this->episode();  
-            $this->_episodesManager->AddEpisode($_POST['title'],$_POST['content'],$_POST['arc_id'],$_POST['manga_id']);         
+            $this->_episodesManager->AddEpisode($_POST['title'],$_POST['content'],$_POST['arc_id'],$_POST['manga_id'],$_POST['url']);         
             header('location: GestionArcEpisode');  
     }
 //--------------------------------------------------------------------------------------------// 
-        public function UpdateEpisode(){
+    public function UpdateEpisode(){
             $this->episode();  
-            $this->_episodesManager->UpdateEpisode($_POST['id'],$_POST['title'],$_POST['content'],$_POST['manga_id']);         
+            $this->_episodesManager->UpdateEpisode($_POST['id'],$_POST['title'],$_POST['content'],$_POST['manga_id'],$_POST['url']);         
             header('location: GestionArcEpisode');  
     }
 
@@ -176,6 +176,7 @@ if ($_POST['content']){
 }       
 //--------------------------------------------------------------------------------------------//  
      public function DeleteManga(){
+         
          if($_POST['lastFileName'] != 'imageexemple.jpg'){
             unlink("public/images/manga/" . $_POST['lastFileName']);
          }

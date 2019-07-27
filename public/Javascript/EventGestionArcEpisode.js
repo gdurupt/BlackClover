@@ -20,12 +20,9 @@ var EventGestionArcEpisode = {
             var arcFlex = "#arc_" + arc;
 
             $(arcFlex).css("display", "flex");
-        }
-    
-        
+        }       
     },
-
-    
+  
     EventChooseEpisode: function (episode,ArcNumber) { 
         
         var gestionArc = "#gestionArc" + ArcNumber;
@@ -43,9 +40,6 @@ var EventGestionArcEpisode = {
         }else if (episode >= 1) {
             var episodeFlex = "#episode_" + episode;
             $(episodeFlex).css("display", "flex");
-
-        }
-    
-        
+        }       
     },
 };

@@ -17,7 +17,7 @@
                 <input class="my-4 text-center form-control" type="text" name="title" value="" require />
 
                 <figure class="img-fluid">
-                    <img src="public/images/manga/imageexemple.jpg" alt="">
+                    <img src="public/images/manga/imageexemple.jpg" alt="esemple">
                     <figcaption>Image d'exemple oublier pas d'en ajouter une !</figcaption>
                 </figure>
 
@@ -47,7 +47,7 @@
                 <input class="my-4 text-center form-control" type="text" name="title" value="<?= $manga->title() ?>" />
 
                 <figure class="img-fluid">
-                    <img src="public/images/manga/<?= $manga->image() ?>" alt="">
+                    <img src="public/images/manga/<?= $manga->image() ?>" alt="<?= $manga->title() ?>">
                     <figcaption>Image du tome selectionné</figcaption>
                 </figure>
 
@@ -71,7 +71,7 @@
                     <input type="hidden" name="Post" value="DeleteManga" />
                     <input type="hidden" name="id" value="<?= $manga->id() ?>" />
                     <input type="hidden" name="lastFileName" value="<?= $manga->image() ?>" />
-                    <input class="btn btn-danger delete" type="submit" value="Supprimer">
+                    <input class="btn btn-danger delete" type="submit" value="Supprimer" onclick="return(confirm('Etes-vous sûr de vouloir supprimer se manga ?'));">
                 </form>
             </div>
 
