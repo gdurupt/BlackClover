@@ -50,7 +50,7 @@ $sessionNotation = filter_var($_SESSION['rating']);
                     <a href="Episode&id=<?= $getId ?>&note=2&update=<?= $sessionNotation ?>" id="star_2" class="text-decoration-none">
                         <span><i class="far fa-star note_2" onmouseenter="NotationEvent.enter(1)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Episode&id=<?= $getId ?>&note=3&update=<?= $sessionNotation ?>" id="star_3" class="text-decoration-none">
+                    <a href="Episode&id=<?= htmlspecialchars($getId) ?>&note=3&update=<?= htmlspecialchars($sessionNotation) ?>" id="star_3" class="text-decoration-none">
                         <span><i class="far fa-star note_3" onmouseenter="NotationEvent.enter(2)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
                     <a href="Episode&id=<?= $getId ?>&note=4&update=<?= $sessionNotation ?>" id="star_4" class="text-decoration-none">
