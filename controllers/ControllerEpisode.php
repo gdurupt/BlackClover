@@ -21,6 +21,8 @@ class ControllerEpisode{
     private function PageEpisode(){     
 //-----------------------------------Id of episode -------------------------------------------//        
         if(isset($_GET["id"])){
+            $getId = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+            $sessionId = filter_var($_SESSION['id'], FILTER_SANITIZE_NUMBER_INT);
 //-----------------------------------Form manager  -------------------------------------------//            
         if(isset($_POST["Post"])){
             $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
@@ -30,21 +32,22 @@ class ControllerEpisode{
            $this->_ratingsManager = new RatingsManager;   
 //----------------------------------- Get note for add and udapte rating ---------------------//            
         if(isset($_GET["note"])){
+            $getNote = filter_input(INPUT_GET, "note", FILTER_SANITIZE_NUMBER_INT);
             if(isset($_GET["update"]) AND $_GET["update"] == 1){
-                $this->_ratingsManager->updateRatings($_GET['note'],$_SESSION['id'],false,$_GET['id']);
-                header("location: Episode&id=".$_GET['id']); 
+                $this->_ratingsManager->updateRatings($getNote,$sessionId,false,$getId);
+                header("location: Episode&id=".$getId); 
             }else{
-                $this->_ratingsManager->addRating($_GET['note'],$_SESSION['id'],false,$_GET['id']);
-                header("location: Episode&id=".$_GET['id']);
+                $this->_ratingsManager->addRating($getNote,$sessionId,false,$getId);
+                header("location: Episode&id=".$getId);
                 }
             }
 //----------------------------------if member => security for multi rating ---------------------//           
             if(isset($_SESSION['id'])){
-                $this->_ratingsManager->SecureMultiVote($_SESSION['id'],false, $_GET['id']);
+                $this->_ratingsManager->SecureMultiVote($sessionId,false, $getId);
             }
 //-----------------------------------Get one episode --------------------------------------------//            
             $this->_episodesManager = new EpisodesManager;           
-            $episodes = $this->_episodesManager->getOne($_GET["id"]);
+            $episodes = $this->_episodesManager->getOne($getId);
 //-----------------------------------Get ccommetns of episode  ----------------------------------//            
             $this->_commentsManager = new CommentsManager;
             $comments = $this->_commentsManager->getCommentOfPage(false,true);
@@ -52,8 +55,8 @@ class ControllerEpisode{
             $this->_mangasManager = new MangasManager;
             $mangas = $this->_mangasManager->getAll(); 
 //----------- get Count usersrating and AVG ratings of episode ----------------------------------//            
-            $notations = $this->_ratingsManager->getRatingsForOne(false, $_GET['id']);           
-            $nbratings = $this->_ratingsManager->getCountUsersRatings(false, $_GET['id']);
+            $notations = $this->_ratingsManager->getRatingsForOne(false, $getId);           
+            $nbratings = $this->_ratingsManager->getCountUsersRatings(false, $getId);
 //-----------------------------------  View   ---------------------------------------------------//             
             $this->_view = new View('Episode');     
             $this->_view->generate(array('episodes' => $episodes,'comments' => $comments,'notations' => $notations,'nbratings' => $nbratings,'mangas' => $mangas));            
