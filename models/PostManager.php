@@ -8,6 +8,7 @@ class PostManager{
     private $_usersManager;
     private $_arcsManager;
     private $_personnageManager;
+    private $_idPostSecure;
 //--------------------------------------------------------------------------------------------//         
        public function __construct($data)
   {
@@ -42,10 +43,19 @@ class PostManager{
         public function personnage(){
         $this->_personnageManager = new PersonnageManager;
     } 
+        public function idPost(){
+        $this->_idPostSecure = new PersonnageManager;
+            if (filter_var($_POST['id'], FILTER_VALIDATE_INT)) {
+                $this->_idPostSecure = $_POST['id'];
+            } else {
+                throw new \Exception("Error code interne");
+            }
+    } 
+    
 //--------------------------------------------------------------------------------------------//     
 //----------------------POST PAGE ADMIN GestionArcEpisode-------------------------------------//    
 //--------------------------------------------------------------------------------------------//
-        public function AddArc(){
+    public function AddArc(){
          $this->arc();  
          $this->_arcsManager->addArc($_POST['arc'],$_POST['content']);
             
@@ -53,11 +63,12 @@ class PostManager{
     } 
 //--------------------------------------------------------------------------------------------// 
     public function DeleteArc(){
-         $this->arc();  
-         $this->_arcsManager->DeleteArc($_POST['id']);
+         $this->arc();
+         $this->idPost();
+         $this->_arcsManager->DeleteArc($this->_idPostSecure);
             
          $this->episode();  
-         $this->_episodesManager->DeleteEpisodesAll($_POST['id']);
+         $this->_episodesManager->DeleteEpisodesAll($this->_idPostSecure);
             
          header('location: GestionArcEpisode');  
     }
