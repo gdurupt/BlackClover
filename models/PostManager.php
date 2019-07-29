@@ -58,59 +58,59 @@ class PostManager{
         $this->_personnageManager = new PersonnageManager;
     } 
         public function idPost(){
-            $post = filter_var($_POST['id'],FILTER_SANITIZE_NUMBER_INT);           
+            $post = filter_input(INPUT_POST, "id", FILTER_SANITIZE_NUMBER_INT);           
             $this->_idPostSecure = $post;
     }
         public function titlePost(){
-            $post = filter_var($_POST['title'], FILTER_SANITIZE_STRING);           
+            $post = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);           
             $this->_titlePostSecure = $post;
     }
         public function contentPost(){
-            $post = filter_var($_POST['content'], FILTER_SANITIZE_STRING);           
+            $post = filter_input(INPUT_POST, "content", FILTER_SANITIZE_STRING);           
             $this->_contentPostSecure = $post;
     }
         public function arcPost(){
-            $post = filter_var($_POST['arc'], FILTER_SANITIZE_NUMBER_INT);           
+            $post = filter_input(INPUT_POST, "arc", FILTER_SANITIZE_NUMBER_INT);           
             $this->_arcPostSecure = $post;
     }
         public function arcIdPost(){
-            $post = filter_var($_POST['arc_id'], FILTER_SANITIZE_NUMBER_INT);           
+            $post = filter_input(INPUT_POST, "arc_id", FILTER_SANITIZE_NUMBER_INT);           
             $this->_arcIdPostSecure = $post;
     }
         public function mangaIdPost(){
-            $post = filter_var($_POST['manga_id'], FILTER_SANITIZE_NUMBER_INT);           
+            $post = filter_input(INPUT_POST, "manga_id", FILTER_SANITIZE_NUMBER_INT);          
             $this->_mangaIdPostSecure = $post;
     }
         public function urlPost(){
-            $post = filter_var($_POST['url'], FILTER_SANITIZE_STRING);           
+            $post = filter_input(INPUT_POST, "url", FILTER_SANITIZE_STRING);          
             $this->_urlPostSecure = $post;
     }
         public function lastfileNamePost(){
-            $post = filter_var($_POST['lastfileName'], FILTER_SANITIZE_STRING);           
+            $post = filter_input(INPUT_POST, "lastFileName", FILTER_SANITIZE_STRING);           
             $this->_lastFileNamePostSecure = $post;
     }
         public function pseudoPost(){
-            $post = filter_var($_POST['pseudo'], FILTER_SANITIZE_STRING);           
+            $post = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_STRING);           
             $this->_pseudoPostSecure = $post;
     }
         public function reportPost(){
-            $post = filter_var($_POST['report'], FILTER_SANITIZE_NUMBER_INT);           
+            $post = filter_input(INPUT_POST, "report", FILTER_SANITIZE_NUMBER_INT);            
             $this->_reportPostSecure = $post;
     }
         public function emailPost(){
-            $post = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);           
+            $post = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);           
             $this->_emailPostSecure = $post;
     }
         public function objetPost(){
-            $post = filter_var($_POST['objet'], FILTER_SANITIZE_STRING);           
+            $post = filter_input(INPUT_POST, "objet", FILTER_SANITIZE_STRING);           
             $this->_objetPostSecure = $post;
     }
         public function messagePost(){
-            $post = filter_var($_POST['message'], FILTER_SANITIZE_STRING);           
+            $post = filter_input(INPUT_POST, "message", FILTER_SANITIZE_STRING);           
             $this->_messagePostSecure = $post;
     }
         public function passwordPost(){
-            $post = filter_var($_POST['password'], FILTER_SANITIZE_STRING);           
+            $post = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);           
             $this->_passwordPostSecure = $post;
     }
      
