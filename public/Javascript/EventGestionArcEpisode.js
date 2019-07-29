@@ -33,9 +33,9 @@ var EventGestionArcEpisode = {
         $(addEpisode).css("display", "none");
         
         
-        if (episode == "gestionArc") {
+        if (episode === "gestionArc") {
             $(gestionArc).css("display", "flex");
-        } else if (episode == "addEpisode") {
+        } else if (episode === "addEpisode") {
             $(addEpisode).css("display", "flex");
         }else if (episode >= 1) {
             var episodeFlex = "#episode_" + episode;

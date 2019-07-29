@@ -19,7 +19,7 @@ var Api = {
             //console.log(data.episodes[1]);
 
             data.episodes.forEach(function (element) {
-                if(element.show.title == "Black Clover"){
+                if(element.show.title === "Black Clover"){
                     $("#title").text(element.title);
                     $("#episode").text("Episode " + element.episode);
                     $("#date").text(element.date);

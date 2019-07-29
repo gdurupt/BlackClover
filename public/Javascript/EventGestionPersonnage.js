@@ -10,7 +10,7 @@ var EventGestionPersonnage = {
         
         $(".buttonPersonnage").css("display", "none"); 
         
-        if (id == "0") {
+        if (id === "0") {
             $("#personnageNew").css("display", "flex");
         } else if (id != "0") {
             $("#personnageNew").css("display", "none");

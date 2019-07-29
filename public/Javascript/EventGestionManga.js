@@ -10,7 +10,7 @@ var EventGestionManga = {
         
         $(".buttonTome").css("display", "none"); 
         
-        if (id == "0") {
+        if (id === "0") {
             $("#tomeNew").css("display", "flex");
         } else if (id != "0") {
             $("#tomeNew").css("display", "none");
