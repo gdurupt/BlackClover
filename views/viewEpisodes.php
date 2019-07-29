@@ -25,7 +25,7 @@
             <div class="col-12 mt-1">
                 <div class="w-100 p-2 d-flex flex-column align-items-center selectEpisode">
                     <div class="w-100 p-2 d-flex justify-content-between align-items-center">
-                        <h5><a href="Episode&id=<?= $episode->id() ?>"><?= $episode->title() ?></a></h5>
+                        <h5><a href="Episode&id=<?= addslashes($episode->id()) ?>"><?= $episode->title() ?></a></h5>
                         <p class="d-none d-lg-inline"><?= $episode->date_episode() ?></p>
                     </div>
                 </div>
