@@ -16,18 +16,18 @@ class UsersManager extends Model{
             'email' => $email,
             'password' => $pass_hache
                 );
-        
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['pseudo'] = $_POST['pseudo'];
-        $_SESSION['password'] = $_POST['password'];
+
+        $_SESSION['email'] = $email;
+        $_SESSION['pseudo'] = $pseudo;
+        $_SESSION['password'] = $password;
         
         return $this->addTable('users', $update, $execute);
 
     }
 //--------------------------------------------------------------------------------------------//       
-    public function multiUsers(){       
+    public function multiUsers($pseudo,$email){       
         $update = 'SELECT * FROM users WHERE pseudo = ? OR email = ?';
-        $execute = array($_POST['pseudo'],$_POST['email']);
+        $execute = array($pseudo,$email);
         return $this->multiUser($update, $execute, true);     
     }
 //--------------------------------------------------------------------------------------------//

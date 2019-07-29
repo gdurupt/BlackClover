@@ -7,6 +7,7 @@
     <?php $nbVote = $nbrating->nbRatings();?>
 <?php endforeach?>
 <!--===============================================================================================-->
+<?php $getId = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT); ?>
 <section class="container mt-5 mb-5 p-5">
     <?php foreach ($mangas as $manga):?>
     <!--===============================================================================================-->
@@ -37,34 +38,34 @@
                 <h5>Noter :</h5>
                 
                 <div><?php if(isset($_SESSION['id'])){ ?>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=1&update=<?= $_SESSION['rating'] ?>" id="star_1" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=1&update=<?= $_SESSION['rating'] ?>" id="star_1" class="text-decoration-none">
                         <span><i class="far fa-star note_1" onmouseenter="NotationEvent.enter(0)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=2&update=<?= $_SESSION['rating'] ?>" id="star_2" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=2&update=<?= $_SESSION['rating'] ?>" id="star_2" class="text-decoration-none">
                         <span><i class="far fa-star note_2" onmouseenter="NotationEvent.enter(1)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=3&update=<?= $_SESSION['rating'] ?>" id="star_3" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=3&update=<?= $_SESSION['rating'] ?>" id="star_3" class="text-decoration-none">
                         <span><i class="far fa-star note_3" onmouseenter="NotationEvent.enter(2)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=4&update=<?= $_SESSION['rating'] ?>" id="star_4" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=4&update=<?= $_SESSION['rating'] ?>" id="star_4" class="text-decoration-none">
                         <span><i class="far fa-star note_4" onmouseenter="NotationEvent.enter(3)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=5&update=<?= $_SESSION['rating'] ?>" id="star_5" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=5&update=<?= $_SESSION['rating'] ?>" id="star_5" class="text-decoration-none">
                         <span><i class="far fa-star note_5" onmouseenter="NotationEvent.enter(4)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=6&update=<?= $_SESSION['rating'] ?>" id="star_6" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=6&update=<?= $_SESSION['rating'] ?>" id="star_6" class="text-decoration-none">
                         <span><i class="far fa-star note_6" onmouseenter="NotationEvent.enter(5)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=7&update=<?= $_SESSION['rating'] ?>" id="star_7" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=7&update=<?= $_SESSION['rating'] ?>" id="star_7" class="text-decoration-none">
                         <span><i class="far fa-star note_7" onmouseenter="NotationEvent.enter(6)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=8&update=<?= $_SESSION['rating'] ?>" id="star_8" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=8&update=<?= $_SESSION['rating'] ?>" id="star_8" class="text-decoration-none">
                         <span><i class="far fa-star note_8" onmouseenter="NotationEvent.enter(7)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=9&update=<?= $_SESSION['rating'] ?>" id="star_9" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=9&update=<?= $_SESSION['rating'] ?>" id="star_9" class="text-decoration-none">
                         <span><i class="far fa-star note_9" onmouseenter="NotationEvent.enter(8)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
-                    <a href="Tome&id=<?= $_GET["id"] ?>&note=10&update=<?= $_SESSION['rating'] ?>" id="star_10" class="text-decoration-none">
+                    <a href="Tome&id=<?= $getId ?>&note=10&update=<?= $_SESSION['rating'] ?>" id="star_10" class="text-decoration-none">
                         <span><i class="far fa-star note_10" onmouseenter="NotationEvent.enter(9)" onmouseleave="NotationEvent.leave()"></i></span>
                     </a>
                     <?php }else{ echo "Veuillez vous connecter pour noter ce tome"; }?>
@@ -90,7 +91,7 @@
         </div>
         <?php if($comment->report() == 0){ ?>
         <div class="col-1 m-auto">
-            <form action="Episode&id=<?= $_GET["id"] ?>" method="post">
+            <form action="Episode&id=<?= $getId ?>" method="post">
                 <input type="hidden" name="Post" value="ReportComment" />
                 <div>
                     <input type="hidden" name="report" value="<?= $comment->id() ?>" />
@@ -109,7 +110,7 @@
     <h2 class="display-4">Ecrire un commentaire</h2>
     <div class="p-1">
         <!--===============================================================================================-->
-        <form action="Tome&id=<?= $_GET["id"] ?>" method="post">
+        <form action="Tome&id=<?= $getId ?>" method="post">
             <input type="hidden" name="Post" value="NewCommentManga" />
             <div class="row">
                 <div class="col-md-6 p-1">

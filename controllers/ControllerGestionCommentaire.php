@@ -27,10 +27,12 @@ class ControllerGestionCommentaire{
 //--------------------------------------------------------------------------------------------//       
         if(isset($_SESSION['admin']) AND $_SESSION['admin'] == "true"){
 //--------------------------------------------------------------------------------------------//  
-        if(isset($_POST["Post"])){
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
+            
+        if(isset($post)){
             $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
             $this->_postManager = new PostManager($post);
-        }    
+        }     
 //--------------------------------------------------------------------------------------------//           
             $this->_mangasManager = new MangasManager;       
             $mangas = $this->_mangasManager->getAll();

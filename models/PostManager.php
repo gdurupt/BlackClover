@@ -119,8 +119,9 @@ class PostManager{
 //--------------------------------------------------------------------------------------------//
     public function AddArc(){
          $this->arc();
-         
-         $this->_arcsManager->addArc($_POST['arc'],$_POST['content']);
+         $this->arcPost();
+         $this->contentPost();
+         $this->_arcsManager->addArc($this->_arcPostSecure,$this->_contentPostSecure);
             
          header('location: GestionArcEpisode');  
     } 
@@ -470,7 +471,9 @@ if ($this->_contentPostSecure){
 //--------------------------------------------------------------------------------------------//
         public function addUsers(){
             $this->user();
-            $this->_usersManager->multiUsers();   
+            $this->emailPost();
+            $this->pseudoPost();
+            $this->_usersManager->multiUsers($this->_pseudoPostSecure,$this->_emailPostSecure);   
     }  
 //--------------------------------------------------------------------------------------------//
 //-----------------------------------POST PAGE Compte------------------------------------------//    

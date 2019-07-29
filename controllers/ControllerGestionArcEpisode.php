@@ -27,7 +27,9 @@ class ControllerGestionArcEpisode{
 //--------------------------------Admin or not ?----------------------------------------------//        
         if(isset($_SESSION['admin']) AND $_SESSION['admin'] == "true"){
 //--------------------------------- Form manager ---------------------------------------------//    
-        if(isset($_POST["Post"])){
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
+            
+        if(isset($post)){
             $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
             $this->_postManager = new PostManager($post);
         }  

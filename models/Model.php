@@ -73,8 +73,12 @@ abstract class Model
            
         $resultat = $req->fetch();
         
-        if (!$resultat){     
-            UsersManager::addUsers($_POST['pseudo'],$_POST['email'],$_POST['password']);
+        if (!$resultat){
+            $pseudo = filter_input(INPUT_POST, "pseudo", FILTER_SANITIZE_STRING);
+            $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+             
+            UsersManager::addUsers($pseudo,$email,$password);
             header('location: Accueil');
         }else{
             $_SESSION['alert'] = "Error";

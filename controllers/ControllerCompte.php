@@ -21,10 +21,12 @@ class ControllerCompte{
             $this->_usersManager = new UsersManager;       
             $this->_usersManager->getUsers($_SESSION['email'], $_SESSION['password']);       
 //--------------------------------- Form manager ---------------------------------------------//        
-            if(isset($_POST["Post"])){
-                $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
-                $this->_postManager = new PostManager($post);
-            }           
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
+            
+        if(isset($post)){
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
+            $this->_postManager = new PostManager($post);
+        }           
 //-----------------------------------  View   ------------------------------------------------//   
             $this->_view = new View('Compte');     
             $this->_view->generate(array());           

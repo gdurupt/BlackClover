@@ -24,7 +24,9 @@ class ControllerEpisode{
             $getId = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
             $sessionId = filter_var($_SESSION['id'], FILTER_SANITIZE_NUMBER_INT);
 //-----------------------------------Form manager  -------------------------------------------//            
-        if(isset($_POST["Post"])){
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
+            
+        if(isset($post)){
             $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
             $this->_postManager = new PostManager($post);
         }   

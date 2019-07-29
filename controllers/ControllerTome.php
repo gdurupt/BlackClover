@@ -23,37 +23,40 @@ class ControllerTome{
     private function PageTome(){  
         
         if(isset($_GET["id"]) AND $_GET['id'] != null){
-            
+            $getId = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+            $sessionId = filter_var($_SESSION['id'], FILTER_SANITIZE_NUMBER_INT);
             $this->_ratingsManager = new RatingsManager;
-                        
-        if(isset($_POST["Post"])){
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
+            
+        if(isset($post)){
             $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
             $this->_postManager = new PostManager($post);
         }  
             
             if(isset($_GET["note"])){
+                $getNote = filter_input(INPUT_GET, "note", FILTER_SANITIZE_NUMBER_INT);
                 if(isset($_GET["update"]) AND $_GET["update"] == 1){
-                    $this->_ratingsManager->updateRatings($_GET['note'],$_SESSION['id'],true,$_GET['id']);
-                    header("location: Tome&id=".$_GET['id']); 
+                    $this->_ratingsManager->updateRatings($getNote,$sessionId,true,$getId);
+                    header("location: Tome&id=".$getId); 
                 }else{
-                    $this->_ratingsManager->addRating($_GET['note'],$_SESSION['id'],true,$_GET['id']);
-                    header("location: Tome&id=".$_GET['id']);
+                    $this->_ratingsManager->addRating($getNote,$sessionId,true,$getId);
+                    header("location: Tome&id=".$getId);
                 }
             }
             
             if(isset($_SESSION['id'])){
-                $this->_ratingsManager->SecureMultiVote($_SESSION['id'],true, $_GET['id']);
+                $this->_ratingsManager->SecureMultiVote($sessionId,true, $getId);
             }
                 
             $this->_mangasManager = new MangasManager;
             
             $this->_commentsManager = new CommentsManager;
             
-            $notations = $this->_ratingsManager->getRatingsForOne(true, $_GET['id']);
+            $notations = $this->_ratingsManager->getRatingsForOne(true, $getId);
             
-            $nbratings = $this->_ratingsManager->getCountUsersRatings(true, $_GET['id']);
+            $nbratings = $this->_ratingsManager->getCountUsersRatings(true, $getId);
         
-            $mangas = $this->_mangasManager->getOne($_GET['id']);
+            $mangas = $this->_mangasManager->getOne($getId);
             
             $comments = $this->_commentsManager->getCommentOfPage(true,false);
             
