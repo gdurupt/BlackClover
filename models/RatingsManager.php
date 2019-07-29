@@ -88,16 +88,4 @@ class RatingsManager extends Model{
         return $this->updateTable('ratings', $update, $execute);      
     }
 //--------------------------------------------------------------------------------------------//   
-        public function deleteRatings($article, $id_article){       
-                
-        if($article == true){
-            $delete = "id_manga = ".$id_article;
-        }else if($article == false){
-            $delete = "id_episode = ".$id_article;
-        }
-            
-        $where = " WHERE ".$delete;
-        
-        return $this->deleteTable('ratings',$where, $id);     
-    }
 }

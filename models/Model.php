@@ -43,7 +43,6 @@ abstract class Model
 //--------------------------------------------------------------------------------------------//
   protected function selectRatings($select, $execute){
     $this->getBdd();
-    $var = [];
     $req = self::$_bdd->prepare($select);
     $req->execute($execute);
 
