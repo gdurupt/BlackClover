@@ -74,8 +74,9 @@ class PostManager{
     }
 //--------------------------------------------------------------------------------------------// 
     public function DeleteEpisode(){
-            $this->episode();  
-            $this->_episodesManager->DeleteEpisode($_POST['id']);         
+            $this->episode();
+            $this->idPost();
+            $this->_episodesManager->DeleteEpisode($this->_idPostSecure);         
             header('location: GestionArcEpisode');  
     }
 //--------------------------------------------------------------------------------------------// 
@@ -86,8 +87,9 @@ class PostManager{
     }
 //--------------------------------------------------------------------------------------------// 
     public function UpdateEpisode(){
-            $this->episode();  
-            $this->_episodesManager->UpdateEpisode($_POST['id'],$_POST['title'],$_POST['content'],$_POST['manga_id'],$_POST['url']);         
+            $this->episode();
+            $this->idPost();
+            $this->_episodesManager->UpdateEpisode($this->_idPostSecure,$_POST['title'],$_POST['content'],$_POST['manga_id'],$_POST['url']);         
             header('location: GestionArcEpisode');  
     }
 
@@ -129,13 +131,15 @@ if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
    $file = $_POST['lastFileName'];
 }
        
+         $this->idPost();
          $this->manga();  
-         $this->_mangaManager->updateManga($_POST['id'], $_POST['title'], $_POST['content'], $file);
+         $this->_mangaManager->updateManga($this->_idPostSecure, $_POST['title'], $_POST['content'], $file);
             
          header('location: GestionManga'); 
     } 
 //--------------------------------------------------------------------------------------------//
      public function NewManga(){
+         
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
         // Testons si le fichier n'est pas trop gros
@@ -187,12 +191,12 @@ if ($_POST['content']){
 }       
 //--------------------------------------------------------------------------------------------//  
      public function DeleteManga(){
-         
+         $this->idPost();
          if($_POST['lastFileName'] != 'imageexemple.jpg'){
             unlink("public/images/manga/" . $_POST['lastFileName']);
          }
          $this->manga();  
-         $this->_mangaManager->deleteManga($_POST['id']);
+         $this->_mangaManager->deleteManga($this->_idPostSecure);
             
          header('location: GestionManga');  
     } 
@@ -200,6 +204,7 @@ if ($_POST['content']){
 //---------------------------POST PAGE ADMIN GestionPersonnage--------------------------------//    
 //--------------------------------------------------------------------------------------------//
      public function UpdatePersonnage(){
+         $this->idPost();
  // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
         // Testons si le fichier n'est pas trop gros
@@ -235,7 +240,7 @@ if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
 }
        
          $this->personnage();  
-         $this->_personnageManager->updatePersonnage($_POST['id'], $_POST['title'], $_POST['content'], $file);
+         $this->_personnageManager->updatePersonnage($this->_idPostSecure, $_POST['title'], $_POST['content'], $file);
             
          header('location: GestionPersonnage'); 
     } 
@@ -292,11 +297,12 @@ if ($_POST['content']){
 }       
 //--------------------------------------------------------------------------------------------//  
      public function DeletePersonnage(){
+         $this->idPost();
          if($_POST['lastFileName'] != 'imageexemple.jpg'){
             unlink("public/images/personnage/" . $_POST['lastFileName']);
          }
          $this->personnage();  
-         $this->_personnageManager->deletePersonnage($_POST['id']);
+         $this->_personnageManager->deletePersonnage($this->_idPostSecure);
             
          header('location: GestionPersonnage');  
     }   
@@ -304,14 +310,16 @@ if ($_POST['content']){
 //---------------------------POST PAGE ADMIN Gestion Commentaire------------------------------//    
 //--------------------------------------------------------------------------------------------//   
         public function DeleteComment(){
+         $this->idPost();
          $this->comment();  
-         $this->_commentManager->DeleteComment($_POST['id']);
+         $this->_commentManager->DeleteComment($this->_idPostSecure);
          header('location: Gestioncommentaire'); 
     }     
 //--------------------------------------------------------------------------------------------//       
         public function ManageComment(){
+         $this->idPost();  
          $this->comment();  
-         $this->_commentManager->getReportComment($_POST['id'],"0");
+         $this->_commentManager->getReportComment($this->_idPostSecure,"0");
          header('location: Gestioncommentaire');
     }   
 //--------------------------------------------------------------------------------------------//
