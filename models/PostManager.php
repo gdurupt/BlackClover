@@ -8,7 +8,21 @@ class PostManager{
     private $_usersManager;
     private $_arcsManager;
     private $_personnageManager;
+    //--------------------------------------------------------------------------------------------// 
     private $_idPostSecure;
+    private $_titlePostSecure;
+    private $_contentPostSecure;
+    private $_arcPostSecure;
+    private $_arcIdPostSecure;
+    private $_mangaIdPostSecure;
+    private $_urlPostSecure;
+    private $_lastFileNamePostSecure;
+    private $_pseudoPostSecure;
+    private $_reportPostSecure;
+    private $_emailPostSecure;
+    private $_objetPostSecure;
+    private $_messagePostSecure;
+    private $_passwordPostSecure;
 //--------------------------------------------------------------------------------------------//         
        public function __construct($data)
   {
@@ -44,15 +58,68 @@ class PostManager{
         $this->_personnageManager = new PersonnageManager;
     } 
         public function idPost(){
-            $idPost = filter_var($_POST['id'], FILTER_VALIDATE_INT);           
-            $this->_idPostSecure = $idPost;
-    } 
-    
+            $post = filter_var($_POST['id'],FILTER_SANITIZE_NUMBER_INT);           
+            $this->_idPostSecure = $post;
+    }
+        public function titlePost(){
+            $post = filter_var($_POST['title'], FILTER_SANITIZE_STRING);           
+            $this->_titlePostSecure = $post;
+    }
+        public function contentPost(){
+            $post = filter_var($_POST['content'], FILTER_SANITIZE_STRING);           
+            $this->_contentPostSecure = $post;
+    }
+        public function arcPost(){
+            $post = filter_var($_POST['arc'], FILTER_SANITIZE_NUMBER_INT);           
+            $this->_arcPostSecure = $post;
+    }
+        public function arcIdPost(){
+            $post = filter_var($_POST['arc_id'], FILTER_SANITIZE_NUMBER_INT);           
+            $this->_arcIdPostSecure = $post;
+    }
+        public function mangaIdPost(){
+            $post = filter_var($_POST['manga_id'], FILTER_SANITIZE_NUMBER_INT);           
+            $this->_mangaIdPostSecure = $post;
+    }
+        public function urlPost(){
+            $post = filter_var($_POST['url'], FILTER_SANITIZE_STRING);           
+            $this->_urlPostSecure = $post;
+    }
+        public function lastfileNamePost(){
+            $post = filter_var($_POST['lastfileName'], FILTER_SANITIZE_STRING);           
+            $this->_lastFileNamePostSecure = $post;
+    }
+        public function pseudoPost(){
+            $post = filter_var($_POST['pseudo'], FILTER_SANITIZE_STRING);           
+            $this->_pseudoPostSecure = $post;
+    }
+        public function reportPost(){
+            $post = filter_var($_POST['report'], FILTER_SANITIZE_NUMBER_INT);           
+            $this->_reportPostSecure = $post;
+    }
+        public function emailPost(){
+            $post = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);           
+            $this->_emailPostSecure = $post;
+    }
+        public function objetPost(){
+            $post = filter_var($_POST['objet'], FILTER_SANITIZE_STRING);           
+            $this->_objetPostSecure = $post;
+    }
+        public function messagePost(){
+            $post = filter_var($_POST['message'], FILTER_SANITIZE_STRING);           
+            $this->_messagePostSecure = $post;
+    }
+        public function passwordPost(){
+            $post = filter_var($_POST['password'], FILTER_SANITIZE_STRING);           
+            $this->_passwordPostSecure = $post;
+    }
+     
 //--------------------------------------------------------------------------------------------//     
 //----------------------POST PAGE ADMIN GestionArcEpisode-------------------------------------//    
 //--------------------------------------------------------------------------------------------//
     public function AddArc(){
-         $this->arc();  
+         $this->arc();
+         
          $this->_arcsManager->addArc($_POST['arc'],$_POST['content']);
             
          header('location: GestionArcEpisode');  
@@ -77,15 +144,24 @@ class PostManager{
     }
 //--------------------------------------------------------------------------------------------// 
     public function AddEpisode(){
-            $this->episode();  
-            $this->_episodesManager->AddEpisode($_POST['title'],$_POST['content'],$_POST['arc_id'],$_POST['manga_id'],$_POST['url']);         
+            $this->episode();
+            $this->titlePost();
+            $this->contentPost();
+            $this->arcIdPost();
+            $this->mangaIdPost();
+            $this->urlPost();
+            $this->_episodesManager->AddEpisode($this->_titlePostSecure,$this->_contentPostSecure,$this->_arcIdPostSecure,$this->_mangaIdPostSecure,$this->_urlPostSecure);         
             header('location: GestionArcEpisode');  
     }
 //--------------------------------------------------------------------------------------------// 
     public function UpdateEpisode(){
             $this->episode();
             $this->idPost();
-            $this->_episodesManager->UpdateEpisode($this->_idPostSecure,$_POST['title'],$_POST['content'],$_POST['manga_id'],$_POST['url']);         
+            $this->titlePost();
+            $this->contentPost();
+            $this->mangaIdPost();
+            $this->urlPost();
+            $this->_episodesManager->UpdateEpisode($this->_idPostSecure,$this->_titlePostSecure,$this->_contentPostSecure,$this->_mangaIdPostSecure,$this->_urlPostSecure);         
             header('location: GestionArcEpisode');  
     }
 
@@ -93,9 +169,14 @@ class PostManager{
 //---------------------------POST PAGE ADMIN GestionManga-------------------------------------//    
 //--------------------------------------------------------------------------------------------//
      public function UpdateManga(){
+         $this->idPost();
+         $this->titlePost();
+         $this->contentPost();
+         $this->manga();
+         $this->lastFileNamePost();
  // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
-        // Testons si le fichier n'est pas trop gros
+if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){     
+    // Testons si le fichier n'est pas trop gros
         if ($_FILES['file']['size'] <= 2000000)
         {
                 
@@ -124,18 +205,17 @@ if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
                 echo "<script>alert(\"Le fichier est trop volumineux (Poids limité à 4Mo)\")</script>";
 		}
     }else{
-   $file = $_POST['lastFileName'];
-}
-       
-         $this->idPost();
-         $this->manga();  
-         $this->_mangaManager->updateManga($this->_idPostSecure, $_POST['title'], $_POST['content'], $file);
+   $file = $this->_lastFileNamePostSecure;
+}  
+         $this->_mangaManager->updateManga($this->_idPostSecure, $this->_titlePostSecure, $this->_contentPostSecure, $file);
             
          header('location: GestionManga'); 
     } 
 //--------------------------------------------------------------------------------------------//
      public function NewManga(){
-         
+         $this->titlePost();
+         $this->contentPost();
+         $this->manga();
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
         // Testons si le fichier n'est pas trop gros
@@ -168,19 +248,18 @@ echo "<script>alert(\"Le fichier est trop volumineux (Poids limité à 4Mo)\")</
     $file = "imageexemple.jpg";
 }
 
-if ($_POST['title']){
-    $title = $_POST['title'];
+if ($this->_titlePostSecure){
+    $title = $this->_titlePostSecure;
 }else {
     $title = "Titre en cour de recherche :)";
 }          
             
             
-if ($_POST['content']){
-    $content = $_POST['content'];
+if ($this->_contentPostSecure){
+    $content = $this->_contentPostSecure;
 }else {
     $content = "Resumé en cour création :)";
-}             
-         $this->manga();  
+}              
          $this->_mangaManager->addManga($title,$content,$file);
             
          header('location: GestionManga');  
@@ -188,8 +267,9 @@ if ($_POST['content']){
 //--------------------------------------------------------------------------------------------//  
      public function DeleteManga(){
          $this->idPost();
-         if($_POST['lastFileName'] != 'imageexemple.jpg'){
-            unlink("public/images/manga/" . $_POST['lastFileName']);
+         $this->lastFileNamePost();
+         if($this->_lastFileNamePostSecure != 'imageexemple.jpg'){
+            unlink("public/images/manga/" . $this->_lastFileNamePostSecure);
          }
          $this->manga();  
          $this->_mangaManager->deleteManga($this->_idPostSecure);
@@ -201,6 +281,10 @@ if ($_POST['content']){
 //--------------------------------------------------------------------------------------------//
      public function UpdatePersonnage(){
          $this->idPost();
+         $this->lastFileNamePost();
+         $this->titlePost();
+         $this->contentPost();
+         $this->personnage();  
  // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
         // Testons si le fichier n'est pas trop gros
@@ -232,16 +316,17 @@ if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
                 echo "<script>alert(\"Le fichier est trop volumineux (Poids limité à 4Mo)\")</script>";
 		}
     }else{
-   $file = $_POST['lastFileName'];
-}
-       
-         $this->personnage();  
-         $this->_personnageManager->updatePersonnage($this->_idPostSecure, $_POST['title'], $_POST['content'], $file);
+   $file = $this->_lastFileNamePostSecure;
+} 
+         $this->_personnageManager->updatePersonnage($this->_idPostSecure, $this->_titlePostSecure, $this->_contentPostSecure, $file);
             
          header('location: GestionPersonnage'); 
     } 
 //--------------------------------------------------------------------------------------------//
      public function NewPersonnage(){
+         $this->titlePost();
+         $this->contentPost();
+         $this->personnage(); 
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
         // Testons si le fichier n'est pas trop gros
@@ -274,15 +359,15 @@ echo "<script>alert(\"Le fichier est trop volumineux (Poids limité à 4Mo)\")</
     $file = "imageexemple.jpg";
 }
 
-if ($_POST['title']){
-    $title = $_POST['title'];
+if ($this->_titlePostSecure){
+    $title = $this->_titlePostSecure;
 }else {
     $title = "Titre en cour de recherche :)";
 }          
             
             
-if ($_POST['content']){
-    $content = $_POST['content'];
+if ($this->_contentPostSecure){
+    $content = $this->_contentPostSecure;
 }else {
     $content = "Resumé en cour création :)";
 }             
@@ -294,8 +379,9 @@ if ($_POST['content']){
 //--------------------------------------------------------------------------------------------//  
      public function DeletePersonnage(){
          $this->idPost();
-         if($_POST['lastFileName'] != 'imageexemple.jpg'){
-            unlink("public/images/personnage/" . $_POST['lastFileName']);
+         $this->lastFileNamePost();
+         if($this->_lastFileNamePostSecure != 'imageexemple.jpg'){
+            unlink("public/images/personnage/" . $this->_lastFileNamePostSecure);
          }
          $this->personnage();  
          $this->_personnageManager->deletePersonnage($this->_idPostSecure);
@@ -322,38 +408,46 @@ if ($_POST['content']){
 //-----------------------------------POST PAGE Episode---------------------------------------//    
 //--------------------------------------------------------------------------------------------// 
         public function NewCommentEpisode(){
-            $this->comment();  
-            $this->_commentManager->AddComment($_POST['pseudo'], $_POST['content'], $_GET['id'],false,true);         
+            $this->comment();
+            $this->pseudoPost();
+            $this->contentPost();
+            $this->_commentManager->AddComment($this->_pseudoPostSecure, $this->_contentPostSecure, $_GET['id'],false,true);         
             header('location: Episode&id='.$_GET["id"]);  
     }    
 //--------------------------------------------------------------------------------------------//
 //-----------------------------------POST PAGE Manga---------------------------------------//    
 //--------------------------------------------------------------------------------------------// 
         public function NewCommentManga(){
-            $this->comment();  
-            $this->_commentManager->AddComment($_POST['pseudo'], $_POST['content'], $_GET['id'],true,false);         
+            $this->comment(); 
+            $this->pseudoPost();
+            $this->contentPost();
+            $this->_commentManager->AddComment($this->_pseudoPostSecure, $this->_contentPostSecure, $_GET['id'],true,false);         
             header('location: Tome&id='.$_GET["id"]);  
     }        
 //--------------------------------------------------------------------------------------------//
 //----------------------------REPORT PAGE Manga and Episode-----------------------------------//    
 //--------------------------------------------------------------------------------------------//    
         public function ReportComment(){    
-            $this->comment();  
-            $this->_commentManager->getReportComment($_POST['report'],"1");
+            $this->comment();
+            $this->reportPost();
+            $this->_commentManager->getReportComment($this->_reportPostSecure,"1");
             header('location: '.$_GET["url"].'&id='.$_GET["id"]);
     } 
 //--------------------------------------------------------------------------------------------//
 //-----------------------------------POST PAGE Contact----------------------------------------//    
 //--------------------------------------------------------------------------------------------//
         public function Contact(){
-       
-        $from = $_POST['email'];
+        $this->emailPost();
+        $this->objetPost();
+        $this->messagePost();
+            
+        $from = $this->_emailPostSecure;
  
         $to = "g.durupt88@hotmail.fr";
  
-        $subject =  $_POST['objet'] ;
+        $subject = $this->_objetPostSecure;
  
-        $message = $_POST['message'];
+        $message = $this->_messagePostSecure;
  
         $headers = "From: " .$from;
  
@@ -366,8 +460,11 @@ if ($_POST['content']){
 //-----------------------------------POST PAGE Users------------------------------------------//    
 //--------------------------------------------------------------------------------------------//    
         public function ConnectUsers(){
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['password'] = $_POST['password'];
+            $this->emailPost();
+            $this->passwordPost();
+            
+            $_SESSION['email'] = $this->_emailPostSecure;
+            $_SESSION['password'] = $this->_passwordPostSecure;
             header('location: Accueil');
     }  
 //--------------------------------------------------------------------------------------------//
@@ -379,40 +476,41 @@ if ($_POST['content']){
 //-----------------------------------POST PAGE Compte------------------------------------------//    
 //--------------------------------------------------------------------------------------------//
         public function ChangePseudo(){
-            
-            $pseudo = $_POST['pseudo'];
+            $this->pseudoPost();
+
             $email = $_SESSION['email'];
             
-            $_SESSION['pseudo'] = $_POST['pseudo'];
+            $_SESSION['pseudo'] = $this->_pseudoPostSecure;
             
             $col = "pseudo";
             
             $this->user();
-            $this->_usersManager->UpdatePseudo($pseudo,$email,$col);
+            $this->_usersManager->UpdatePseudo($this->_pseudoPostSecure,$email,$col);
             header('location: Compte');
     }
 //--------------------------------------------------------------------------------------------//
         public function ChangeEmail(){
-                     
-            $change = $_POST['email'];
+            $this->emailPost();
+
             $email = $_SESSION['email'];
             
-            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['email'] = $this->_emailPostSecure;
             
             $col = "email";
             
             $this->user();
-            $this->_usersManager->UpdatePseudo($change,$email,$col);
+            $this->_usersManager->UpdatePseudo($this->_emailPostSecure,$email,$col);
             header('location: Compte');
     }
 //--------------------------------------------------------------------------------------------//
         public function ChangePass(){
+            $this->passwordPost();
             
-            $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $pass_hache = password_hash($this->_passwordPostSecure, PASSWORD_DEFAULT);
             
             $email = $_SESSION['email'];
             
-            $_SESSION['password'] = $_POST['password'];
+            $_SESSION['password'] = $this->_passwordPostSecure;
             
             $col = "password";
             
