@@ -44,9 +44,9 @@ class PostManager{
         $this->_personnageManager = new PersonnageManager;
     } 
         public function idPost(){
-            $id = $_POST['id'];
+            $idPost = $_POST['id'];
             if (filter_var($id, FILTER_VALIDATE_INT)) {
-                $this->_idPostSecure = $id;
+                $this->_idPostSecure = $idPost;
             } else {
                 throw new \Exception("Error code interne");
             }
