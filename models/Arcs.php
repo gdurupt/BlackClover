@@ -4,7 +4,7 @@ class Arcs{
   private $_id;
   private $_title;
   private $_content;
-  private $_nbArc;
+  private $_nbArcs;
 //--------------------------------------------------------------------------------------------//          
    public function __construct(array $data)
   {

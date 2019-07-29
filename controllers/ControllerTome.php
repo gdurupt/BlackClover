@@ -48,7 +48,7 @@ class ControllerTome{
             
             $this->_commentsManager = new CommentsManager;
             
-            $notations = $this->_ratingsManager->getRatings(true, $_GET['id']);
+            $notations = $this->_ratingsManager->getRatingsForOne(true, $_GET['id']);
             
             $nbratings = $this->_ratingsManager->getCountUsersRatings(true, $_GET['id']);
         

@@ -5,7 +5,7 @@ require_once 'views/View.php';
 class ControllerPersonnage{
 //--------------------------------------------------------------------------------------------//    
     private $_view;
-    private $_PersonnageManager;
+    private $_personnageManager;
 //--------------------------------------------------------------------------------------------//    
     public function __construct($url){           
         if (isset($url) && count($url) > 1) {       

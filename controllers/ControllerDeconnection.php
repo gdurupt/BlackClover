@@ -2,9 +2,7 @@
 
 require_once 'views/View.php';
 
-class ControllerDeconnection{
-//--------------------------------------------------------------------------------------------//   
-    private $_view;
+class ControllerDeconnection{ 
 //--------------------------------------------------------------------------------------------//   
     public function __construct($url){           
         if (isset($url) && count($url) > 1) {       

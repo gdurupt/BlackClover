@@ -5,7 +5,6 @@ class Personnage{
   private $_title;
   private $_content;
   private $_image;
-  private $_nbmangas;
 //--------------------------------------------------------------------------------------------//          
    public function __construct(array $data)
   {

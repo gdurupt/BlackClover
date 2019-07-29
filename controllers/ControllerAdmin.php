@@ -5,7 +5,7 @@ require_once 'views/View.php';
 class ControllerAdmin{
 //--------------------------------------------------------------------------------------------//      
     private $_view;
-    private $_comments;
+    private $_commentsManager;
     private $_episodesManager;
     private $_mangasManager;
     private $_arcsManager;

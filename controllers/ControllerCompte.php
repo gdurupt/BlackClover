@@ -5,7 +5,6 @@ require_once 'views/View.php';
 class ControllerCompte{
 //--------------------------------------------------------------------------------------------//    
     private $_view;
-    private $_comments;
     private $_usersManager;
 //--------------------------------------------------------------------------------------------//        
     public function __construct($url){           
