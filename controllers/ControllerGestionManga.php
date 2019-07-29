@@ -28,8 +28,9 @@ class ControllerGestionManga{
  //--------------------------------------------------------------------------------------------//
     
         if(isset($_POST["Post"])){
-            $this->_postManager = new PostManager($_POST["Post"]);
-        }   
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
+            $this->_postManager = new PostManager($post);
+        }     
             
             $this->_mangasManager = new MangasManager;
         

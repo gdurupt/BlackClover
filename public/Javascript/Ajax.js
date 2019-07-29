@@ -16,4 +16,4 @@ function ajaxGet(url, callback) {
         console.error("Erreur réseau avec l'URL " + url);
     });
     req.send(null);
-
+};

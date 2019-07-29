@@ -28,8 +28,9 @@ class ControllerGestionArcEpisode{
         if(isset($_SESSION['admin']) AND $_SESSION['admin'] == "true"){
 //--------------------------------- Form manager ---------------------------------------------//    
         if(isset($_POST["Post"])){
-            $this->_postManager = new PostManager($_POST["Post"]);
-        }   
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
+            $this->_postManager = new PostManager($post);
+        }  
 //--------------------------------- all mangas ---------------------------------------------//            
             $this->_mangasManager = new MangasManager;
             $mangas = $this->_mangasManager->getAll();

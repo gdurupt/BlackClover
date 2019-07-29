@@ -15,10 +15,11 @@ class ControllerContact{
     }
 //--------------------------------------------------------------------------------------------//   
     private function PageContact(){            
-//--------------------------------- Form manager ---------------------------------------------//       
+//--------------------------------- Form manager ---------------------------------------------//        
         if(isset($_POST["Post"])){
-            $this->_postManager = new PostManager($_POST["Post"]);
-        } 
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
+            $this->_postManager = new PostManager($post);
+        }  
 //-----------------------------------  View   ------------------------------------------------//       
         $this->_view = new View('Contact');     
         $this->_view->generate(array());

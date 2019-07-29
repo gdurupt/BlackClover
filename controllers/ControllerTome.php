@@ -26,9 +26,10 @@ class ControllerTome{
             
             $this->_ratingsManager = new RatingsManager;
                         
-            if(isset($_POST["Post"])){
-                $this->_postManager = new PostManager($_POST["Post"]);
-            }
+        if(isset($_POST["Post"])){
+            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
+            $this->_postManager = new PostManager($post);
+        }  
             
             if(isset($_GET["note"])){
                 if(isset($_GET["update"]) AND $_GET["update"] == 1){
