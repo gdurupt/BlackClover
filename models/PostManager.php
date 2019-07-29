@@ -45,7 +45,7 @@ class PostManager{
     } 
         public function idPost(){
             $idPost = $_POST['id'];
-            if (filter_var($id, FILTER_VALIDATE_INT)) {
+            if (filter_var($idPost, FILTER_VALIDATE_INT)) {
                 $this->_idPostSecure = $idPost;
             } else {
                 throw new \Exception("Error code interne");
