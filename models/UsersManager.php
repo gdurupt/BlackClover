@@ -6,7 +6,7 @@ class UsersManager extends Model{
         return $this->secureUsers('users', $email, $password); 
     }
 //--------------------------------------------------------------------------------------------//
-    public function addUsers($pseudo,$email,$pass){ 
+    public function addUsers($pseudo,$email,$password){ 
                  
         $pass_hache = password_hash($pass, PASSWORD_DEFAULT);
 
