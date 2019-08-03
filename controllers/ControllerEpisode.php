@@ -22,7 +22,9 @@ class ControllerEpisode{
 //-----------------------------------Id of episode -------------------------------------------//        
         if(isset($_GET["id"])){
             $getId = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-            $sessionId = filter_var($_SESSION['id'], FILTER_SANITIZE_NUMBER_INT);
+            if(isset($_SESSION['id'])){
+   $sessionId = filter_var($_SESSION['id'], FILTER_SANITIZE_NUMBER_INT); 
+                }
 //-----------------------------------Form manager  -------------------------------------------//            
             $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
             

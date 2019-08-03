@@ -10,7 +10,7 @@ var EventGestionArcEpisode = {
         
         $(".gestionAll").css("display", "none"); 
         
-        if (arc == "newArc") {
+        if (arc === "newArc") {
             $("#newArc").css("display", "flex");
         } else if (arc > "0") {
             $("#newArc").css("display", "none");

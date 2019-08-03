@@ -9,7 +9,9 @@
 <!--===============================================================================================-->
 <?php 
 $getId = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
-$sessionNotation = filter_var($_SESSION['rating']);
+if(isset($_SESSION['rating'])){
+   $sessionNotation = filter_var($_SESSION['rating']); 
+}
 ?>
 <section class="container mt-5 mb-5 p-5">
     <?php foreach ($episodes as $episode):?>

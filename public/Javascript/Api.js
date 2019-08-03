@@ -6,8 +6,8 @@
 var Api = {
     // -----------------------------------------------------------------------------------------------------//
     init: function () {
-        this.before = "7";
-        this.after = "0"; 
+        this.before = "1";
+        this.after = "7"; 
         this.v = "3.0"; // Version 3.0
         this.key = "87b446de1ea2"; // Clé d'acces
         this.api(); // Recuperation des données Betaserie
@@ -23,7 +23,12 @@ var Api = {
                     $("#title").text(element.title);
                     $("#episode").text("Episode " + element.episode);
                     $("#date").text(element.date);
-                    $("#content").text(element.description);
+                    if (element.description === undefined){
+                       $("#content").text(element.description); 
+                    }else{
+                       $("#content").text("Description en cour de rédaction");  
+                    }
+                    
                     console.log(element);
                 }
             });

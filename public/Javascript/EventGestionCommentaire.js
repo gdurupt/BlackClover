@@ -26,7 +26,7 @@ var EventGestionCommentaire = {
 
         $(viewComs).css("display", "flex");
 
-        $(eventManga).attr('onclick','EventGestionCommentaire.EventSecondClickManga("' + manga + '")');
+        $(eventManga).attr("onclick","EventGestionCommentaire.EventSecondClickManga(" + manga + ")");
 
     },
     
@@ -38,7 +38,7 @@ var EventGestionCommentaire = {
 
         $(viewComs).css("display", "none");
 
-        $(eventManga).attr('onclick','EventGestionCommentaire.EventFirstClickManga("' + manga + '")');
+        $(eventManga).attr("onclick","EventGestionCommentaire.EventFirstClickManga(" + manga + ")");
 
     },
     
@@ -51,7 +51,7 @@ var EventGestionCommentaire = {
 
         $(viewEpisodes).css("display", "flex");
 
-        $(eventArc).attr('onclick','EventGestionCommentaire.EventSecondClickArc("' + arc + '")');
+        $(eventArc).attr("onclick","EventGestionCommentaire.EventSecondClickArc(" + arc + ")");
 
     },
 
@@ -65,7 +65,7 @@ var EventGestionCommentaire = {
         
         $(".CommentaireBloc").css("display", "none");
 
-        $(eventArc).attr('onclick','EventGestionCommentaire.EventFirstClickArc("' + arc + '")');
+        $(eventArc).attr("onclick","EventGestionCommentaire.EventFirstClickArc(" + arc + ")");
 
     },
     
