@@ -25,7 +25,7 @@
                     <div>
                         <input type="submit" class="m-1 btn btn-outline-success" value="Connexion">
                     </div>
-                    <a class="nav-link m-1 text-center" href="">J'ai oublier mes identifiant ?</a>
+                    <a class="nav-link m-1 text-center" href="Identifiant">J'ai oublier mes identifiant ?</a>
                 </form>
 <!--===============================================================================================-->
                 <img src="public/images/divers/barreV.png" alt="Barre verticale" class="col-lg-4 d-none d-lg-block d-xl-block">

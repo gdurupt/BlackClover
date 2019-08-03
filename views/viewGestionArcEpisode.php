@@ -68,7 +68,7 @@
                     <input type="submit" value="Modifier" class="btn btn-success btn px-3 ">
                 </div>
             </form>
-            <form action="GestionArcEpisode" method="post" class="col-12 w-100">
+            <form action="GestionArcEpisode" method="post" class="w-100">
                 <input type="hidden" name="Post" value="DeleteArc" />
                 <input type="hidden" name="id" value="<?= $arc->id() ?>" />
                 <div class="col-12 w-100 d-flex justify-content-center align-items-center my-5">
@@ -104,10 +104,10 @@
                     <input type="submit" value="Modifier" class="btn btn-success btn px-3 ">
                 </div>
             </form>
-            <form action="GestionArcEpisode" method="post" class="col-12 w-100">
+            <form action="GestionArcEpisode" method="post" class="w-100">
                 <input type="hidden" name="Post" value="DeleteEpisode" />
                 <input type="hidden" name="id" value="<?= $episode->id() ?>" />
-                <div class="col-12 w-100 d-flex justify-content-center align-items-center mb-3">
+                <div class="w-100 d-flex justify-content-center align-items-center mb-3">
                     <input type="submit" value="Supprimer" class="btn btn-danger btn px-3 ">
                 </div>
             </form>

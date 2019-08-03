@@ -25,24 +25,19 @@ class ControllerGestionPersonnage{
             $this->_usersManager->getUsers($_SESSION['email'], $_SESSION['password']);
         
         if(isset($_SESSION['admin']) AND $_SESSION['admin'] == "true"){
- //--------------------------------------------------------------------------------------------//
-    
+ //--------------------------------------------------------------------------------------------//  
             $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
             
-        if(isset($post)){
-            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
-            $this->_postManager = new PostManager($post);
-        }    
-        
-            $this->_personnageManager = new PersonnageManager;
-        
-            $personnages = $this->_personnageManager->getAll(); 
- //--------------------------------------------------------------------------------------------//            
-
-                
+            if(isset($post)){
+                $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 
+                $this->_postManager = new PostManager($post);
+            }    
+//--------------------------------------------------------------------------------------------//        
+                $this->_personnageManager = new PersonnageManager; 
+                $personnages = $this->_personnageManager->getAll(); 
+ //--------------------------------------------------------------------------------------------//                         
             $this->_view = new View('GestionPersonnage');     
-            $this->_view->generate(array('personnages' => $personnages));
-            
+            $this->_view->generate(array('personnages' => $personnages));           
         }else{
             header('location: Accueil');
         }

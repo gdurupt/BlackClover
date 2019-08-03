@@ -264,7 +264,7 @@ if ($this->_contentPostSecure){
          $this->_mangaManager->addManga($title,$content,$file);
             
          header('location: GestionManga');  
-}       
+}
 //--------------------------------------------------------------------------------------------//  
      public function DeleteManga(){
          $this->idPost();
@@ -474,7 +474,13 @@ if ($this->_contentPostSecure){
             $this->emailPost();
             $this->pseudoPost();
             $this->_usersManager->multiUsers($this->_pseudoPostSecure,$this->_emailPostSecure);   
-    }  
+    }
+//--------------------------------------------------------------------------------------------//
+        public function UsersLost(){
+            $this->user();
+            $this->emailPost();
+            $this->_usersManager->UsersLost($this->_emailPostSecure);   
+    }
 //--------------------------------------------------------------------------------------------//
 //-----------------------------------POST PAGE Compte------------------------------------------//    
 //--------------------------------------------------------------------------------------------//

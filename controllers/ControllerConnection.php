@@ -21,7 +21,7 @@ class ControllerConnection{
             session_destroy();
         }
 //--------------------------------- Form manager ---------------------------------------------//                 
-            $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
+        $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING);
             
         if(isset($post)){
             $post = filter_input(INPUT_POST, "Post", FILTER_SANITIZE_STRING); 

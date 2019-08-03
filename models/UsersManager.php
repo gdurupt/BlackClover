@@ -31,8 +31,7 @@ class UsersManager extends Model{
         return $this->multiUser($update, $execute, true);     
     }
 //--------------------------------------------------------------------------------------------//
-    public function getCountUsers(){   
-        
+    public function getCountUsers(){      
         $update = 'SELECT COUNT(*) AS nbUsers FROM users';
         $execute = NULL;
         return $this->selectTable('Users',$update, $execute);   
@@ -46,5 +45,15 @@ class UsersManager extends Model{
 	);      
         return $this->updateTable('users', $update, $execute);      
     }
-//--------------------------------------------------------------------------------------------// 
+//--------------------------------------------------------------------------------------------//       
+    public function UsersLost($email){       
+        $update = 'UPDATE users SET password = :password WHERE email = :email';
+        $execute = array('email' => $email,'password' => 'Azerty88!');
+        
+        $select = 'SELECT * FROM users WHERE email = ?';
+        $executeSelect = array($email);
+        
+        $this->EmailUsers($select, $executeSelect, $email);
+        $this->updateTable('users', $update, $execute);     
+    }  
 }

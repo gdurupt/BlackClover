@@ -85,7 +85,7 @@ abstract class Model
             header('location: Connection');
     }
    }
-
+//--------------------------------------------------------------------------------------------//
     protected function secureUsers($table, $email, $password){
     
         $this->getBdd();
@@ -107,6 +107,41 @@ abstract class Model
              header('location: Connection');
     }
    }
+  }
+//--------------------------------------------------------------------------------------------//    
+  
+        protected function EmailUsers($select,$execute,$email){
+    
+        $this->getBdd();
+        $req = self::$_bdd->prepare($select);
+        $req->execute($execute);
+           
+        $resultat = $req->fetch();
+        
+        if (!$resultat){
+            header('location: Identifiant');
+        }else if ($resultat){
+            
+        $from = "g.durupt88@hotmail.fr";
+ 
+        $subject = "WikiBlackClover Password";
+ 
+        $message = "Bonjour ".$resultat['pseudo'].",
+        Vous avez demandé a retrouver vos identifiant,Pour plus de faciliter voici votre nouveau mot de passe afin de vous connecter sur le site Wiki BlackCLover.
+        
+        Azerty88!.
+        
+        Veuillez changer votre mot de passe dans l'espace membre du site.
+        
+        Merci pour votre confiance.
+        
+        Guillaume";
+ 
+        $headers = "From: " .$from;
+ 
+        mail($email,$subject,$message,$headers);
+        header('location: Identifiant');
+    }
   }
 //--------------------------------------------------------------------------------------------//     
 //--------------------------------     MODEL  UPDATE     -------------------------------------//    
