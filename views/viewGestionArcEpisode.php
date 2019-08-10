@@ -29,7 +29,7 @@
         <form action="GestionArcEpisode" method="post" class="w-100">
             <input type="hidden" name="Post" value="addArc" />
             <div class="col-12 d-flex justify-content-center align-items-center w-100 m-3">
-                <input type="text" name="arc" placeholder="Nouvel Arc" required class="ml-2" />
+                <input type="text" name="title" placeholder="Nouvel Arc" required class="ml-2" />
             </div>
             <div class="col-12 d-flex justify-content-center align-items-center w-100 m-3">
                 <textarea class="form-control" name="content" placeholder="Veuillez écrire le synopsis" required></textarea>
@@ -58,8 +58,9 @@
         <div class="gestionArc col-9 flex-column justify-content-center align-items-center" id="gestionArc<?= $numberArc ?>">
             <form action="GestionArcEpisode" method="post" class="w-100">
                 <input type="hidden" name="Post" value="UpdateArc" />
+                <input type="hidden" name="id" value="<?= $arc->id() ?>" />
                 <div class="w-100 my-4">
-                    <input type="text" name="arc" value="<?= $arc->title() ?>" required class="form-control text-center" />
+                    <input type="text" name="title" value="<?= $arc->title() ?>" required class="form-control text-center" />
                 </div>
                 <div class="w-100 my-4">
                     <textarea class="form-control" name="content" required><?= $arc->content() ?></textarea>

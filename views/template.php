@@ -120,7 +120,7 @@
     <footer>
         <div class="container">
             <div class="row d-flex flex-column flex-md-row align-items-center justify-content-center mt-1">
-                <p class="p-1"><a href="Accueil">Politique de confidentialité</a></p>
+                <p class="p-1"><a href="Politique">Politique de confidentialité</a></p>
                 <p class="p-1 d-none d-lg-flex">|</p>
                 <p class="p-1"><a href="QuiSommesNous">Qui sommes nous ?</a></p>
                 <p class="p-1 d-none d-lg-flex">|</p>

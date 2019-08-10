@@ -129,7 +129,7 @@ abstract class Model
         $message = "Bonjour ".$resultat['pseudo'].",
         Vous avez demandé a retrouver vos identifiant,Pour plus de faciliter voici votre nouveau mot de passe afin de vous connecter sur le site Wiki BlackCLover.
         
-        Azerty88!.
+        Azerty88!
         
         Veuillez changer votre mot de passe dans l'espace membre du site.
         

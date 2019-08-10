@@ -14,7 +14,7 @@ var EventEpisode = {
 
         $(viewEpisodes).css("display", "flex");
 
-        $(eventArc).attr('onclick','EventEpisode.EventSecondClick("' + arc + '")');
+        $(eventArc).attr("onclick","EventEpisode.EventSecondClick(" + arc + ")");
 
     },
 
@@ -26,7 +26,7 @@ var EventEpisode = {
 
         $(viewEpisodes).css("display", "none");
 
-        $(eventArc).attr('onclick','EventEpisode.EventFirstClick("' + arc + '")');
+        $(eventArc).attr("onclick","EventEpisode.EventFirstClick(" + arc + ")");
 
     },
 

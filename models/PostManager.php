@@ -119,11 +119,22 @@ class PostManager{
 //--------------------------------------------------------------------------------------------//
     public function AddArc(){
          $this->arc();
-         $this->arcPost();
+         $this->titlePost();
          $this->contentPost();
-         $this->_arcsManager->addArc($this->_arcPostSecure,$this->_contentPostSecure);
+         $this->_arcsManager->addArc($this->_titlePostSecure,$this->_contentPostSecure);
             
          header('location: GestionArcEpisode');  
+    } 
+//--------------------------------------------------------------------------------------------// 
+    public function UpdateArc(){
+            $this->arc();
+        
+            $this->idPost();
+            $this->titlePost();
+            $this->contentPost();
+    
+            $this->_arcsManager->UpdateArc($this->_idPostSecure,$this->_titlePostSecure,$this->_contentPostSecure);         
+            header('location: GestionArcEpisode');  
     } 
 //--------------------------------------------------------------------------------------------// 
     public function DeleteArc(){

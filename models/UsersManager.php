@@ -47,13 +47,13 @@ class UsersManager extends Model{
     }
 //--------------------------------------------------------------------------------------------//       
     public function UsersLost($email){       
-        $update = 'UPDATE users SET password = :password WHERE email = :email';
-        $execute = array('email' => $email,'password' => 'Azerty88!');
+        $update = ' SET password = :password WHERE email = :email';
+        $execute = array('email' => $email,'password' => time());
         
         $select = 'SELECT * FROM users WHERE email = ?';
         $executeSelect = array($email);
         
         $this->EmailUsers($select, $executeSelect, $email);
-        $this->updateTable('users', $update, $execute);     
+        $this->updateTable('users', $update, $execute);
     }  
 }

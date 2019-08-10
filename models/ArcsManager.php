@@ -43,5 +43,14 @@ class ArcsManager extends Model{
         
         return $this->deleteTable('arcs',$where, $id);   
     }
- //--------------------------------------------------------------------------------------------//
+ //--------------------------------------------------------------------------------------------//  
+    public function UpdateArc($id,$title,$content){             
+        $update = ' SET title = :title, content = :content WHERE id = :id';
+        $execute = array(
+	       'title' => $title,
+	       'content' => $content,
+           'id' => $id
+	);      
+        return $this->updateTable('arcs', $update, $execute);      
+    }
 }
