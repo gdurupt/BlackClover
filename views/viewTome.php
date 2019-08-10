@@ -96,7 +96,7 @@ if(isset($_SESSION['rating'])){
         </div>
         <?php if($comment->report() == 0){ ?>
         <div class="col-1 m-auto">
-            <form action="Episode&id=<?= $getId ?>" method="post">
+            <form action="Tome&id=<?= $getId ?>" method="post">
                 <input type="hidden" name="Post" value="ReportComment" />
                 <div>
                     <input type="hidden" name="report" value="<?= $comment->id() ?>" />
@@ -112,14 +112,18 @@ if(isset($_SESSION['rating'])){
         <hr>
     </div>
     <?php endforeach?>
+    <?php   
+                            
+    if(isset($_SESSION['pseudo'])){ ?>
+                                
     <h2 class="display-4">Ecrire un commentaire</h2>
     <div class="p-1">
         <!--===============================================================================================-->
-        <form action="Tome&id=<?= $getId ?>" method="post">
-            <input type="hidden" name="Post" value="NewCommentManga" />
+        <form action="Episode&id=<?= $getId ?>" method="post">
+            <input type="hidden" name="Post" value="NewCommentEpisode" />
             <div class="row">
                 <div class="col-md-6 p-1">
-                    <input placeholder="Votre Nom" name="pseudo" class="form-control" required>
+                    <input placeholder="Votre Nom" name="pseudo" class="form-control" required value="<?=$_SESSION['pseudo']?>">
                 </div>
                 <div class="col-md-12 p-1">
                     <textarea class="form-control" name="content" placeholder="Votre Message" required></textarea>
@@ -131,5 +135,6 @@ if(isset($_SESSION['rating'])){
         </form>
         <!--===============================================================================================-->
     </div>
+    <?php }else{} ?>
 </section>
 <script src="public/Javascript/Notation.js"></script>
